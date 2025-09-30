@@ -33,7 +33,7 @@ const Offer = () => {
         >
           <img
             src="https://images.unsplash.com/photo-1598546143495-8ab9e3c8a2ad"
-            alt="House Removals"
+            alt=" Removals"
             className="w-full h-52 object-cover"
           />
           {/* Content Wrapper */}

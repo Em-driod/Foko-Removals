@@ -9,7 +9,7 @@ const About = () => {
         <img
           // Placeholder source since the uploaded image is not a URL, 
           // replace 'your-van-image-url.jpg' with the actual image path or import.
-          src="your-van-image-url.jpg" 
+          src="busman.png" 
           alt="Foko Removals Van with boxes"
           className="w-full h-full object-cover"
         />
