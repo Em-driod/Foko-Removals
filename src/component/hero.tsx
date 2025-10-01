@@ -1,33 +1,62 @@
+import { FaPhone } from "react-icons/fa6";
+import { IoIosMailUnread } from "react-icons/io";
+
 const Hero = () => {
   return (
     // **Key Change:** Changed 'p-4 lg:p-8' to 'px-4 lg:px-8 py-16' to drastically reduce horizontal margin on all screen sizes, while maintaining vertical spacing.
-    <div className="relative min-h-screen flex flex-col lg:flex-row justify-center items-center w-full max-w-7xl mx-auto px-0 lg:px-0 py-16 gap-12">
+  <div className="relative min-h-screen flex flex-col lg:flex-row justify-center items-start w-full max-w-7xl mx-auto px-0 lg:px-0 py-16 gap-12 overflow-hidden">
       
       {/* Left side - Company Info */}
       <div className="text-white space-y-6 w-full lg:w-1/2 text-center lg:text-left">
         <p className="text-sm flex items-center justify-center lg:justify-start gap-2">
-          Trusted By 100+ <span className="text-yellow-400">⭐</span>
+          Trusted By 100+ <span className="text-yellow-400"> <img src="Group 3.png" alt="" /></span>
         </p>
         
         {/* Adjusted text size for better responsiveness */}
-        <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
-          <span className="text-blue-500">Foko Removals</span> – Your <br /> Move, Our Mission
-        </h1>
-        <p className="text-gray-200 text-lg">
-          Reliable man & van and removal services, Based in <br className="hidden sm:block" /> Loughborough, serving across the UK.
-        </p>
+<h1
+  className="font-bold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+  style={{
+    fontWeight: 600,
+    fontSize: '2.1rem', // ~33px on mobile
+    lineHeight: '2.5rem', // ~40px on mobile
+    letterSpacing: '-2px',
+    // Restore large size for large screens
+    ...(window.innerWidth >= 1024 ? {
+      fontSize: '50px',
+      lineHeight: '62px',
+      letterSpacing: '-3px'
+    } : {})
+  }}
+>
+  <span className="text-blue-500">Foko Removals</span> – Your <br /> Move, Our Mission
+</h1>
+<p
+  className="text-gray-200 text-base sm:text-lg md:text-xl"
+  style={{
+    fontFamily: 'Arial',
+    fontWeight: 400,
+    fontStyle: 'normal',
+    fontSize: window.innerWidth >= 1024 ? '18px' : '1rem',
+    lineHeight: window.innerWidth >= 1024 ? '26px' : '1.5rem',
+    letterSpacing: '0px',
+  }}
+>
+  Reliable man & van and removal services, Based in <br className="hidden sm:block" /> Loughborough, serving across the UK.
+</p>
         <div className="space-y-3 pt-4">
           <p className="flex items-center gap-2 justify-center lg:justify-start">
-            📞 <span className="text-lg font-medium">07920021955</span>
+           <p className="bg-white/10 backdrop-blur-md rounded-full p-2 "><FaPhone size={20} />
+</p>  <span className="text-lg font-medium ">07920021955</span>
           </p>
           <p className="flex items-center gap-2 justify-center lg:justify-start">
-            📧 <span className="text-lg font-medium">info@fokoremovalsltd.co.uk</span>
+            <p className="bg-white/10 backdrop-blur-md rounded-full p-2 ">
+           <IoIosMailUnread size={20} /> </p> <span className="text-lg font-medium">info@fokoremovalsltd.co.uk</span>
           </p>
         </div>
       </div>
 
       {/* Right side - Contact Form */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 w-full max-w-md shadow-2xl border border-white/20">
+  <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 w-[95vw] max-w-md lg:w-[500px] shadow-2xl border border-white/20 mx-auto lg:mx-0">
         <h2 className="text-white text-2xl font-semibold mb-6 text-center">Client Contact Form</h2>
         <form>
           
