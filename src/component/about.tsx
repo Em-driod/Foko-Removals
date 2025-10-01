@@ -23,28 +23,38 @@ const About = () => {
           
           <div className="space-y-2 max-w-2xl">
             {/* The primary heading */}
-            <h2 className="text-sm md:text-xl font-bold" style={{
-              fontFamily: 'inter',
-              fontWeight: 500,
-              fontStyle: 'meduim',
-              fontSize: '50px',
-              lineHeight: '67px',
-              letterSpacing: '0px',
-            }}>
+            <h2
+              className="text-sm md:text-xl font-bold text-center md:text-left"
+              style={{
+                fontFamily: 'inter',
+                fontWeight: 500,
+                fontStyle: 'meduim',
+                fontSize: '50px',
+                lineHeight: '67px',
+                letterSpacing: '0px',
+              }}
+            >
               About Us
             </h2>
             
             {/* The description text */}
-            <p className="text-xs md:text-lg text-white/90"  style={{
-              fontFamily: 'Arial',
-              fontWeight: 400,
-              fontStyle: 'Regular',
-              fontSize: '18px',
-              lineHeight: '32px',
-              letterSpacing: '0px',
-            }} >
+            <p
+              className="text-xs md:text-lg text-white/90 text-center md:text-left"
+              style={{
+                fontFamily: 'Arial',
+                fontWeight: 400,
+                fontStyle: 'Regular',
+                fontSize: '13px', // smaller on mobile
+                lineHeight: '22px',
+                letterSpacing: '0px',
+                ...(window.innerWidth >= 768 ? {
+                  fontSize: '18px',
+                  lineHeight: '32px',
+                } : {})
+              }}
+            >
               At Foko Removals, we're all about making your move smooth and stress-free. 
-              Whether it's a single item, full house, or office relocation — we've got you covered 
+              Whether it's a single item, full house, or office relocation — we've got you covered <br className="block md:hidden" />
               with a friendly team, fair prices, and full insurance for peace of mind.
             </p>
           </div>
