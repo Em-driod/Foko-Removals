@@ -67,44 +67,54 @@ const Why = () => {
       overflowX: 'hidden'
     }}>
       {/* Header and Introduction - Left and Right corners */}
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'flex-start',
-        marginBottom: '30px',
-        flexDirection: 'row'
-      }}>
+      <div
+        className="flex flex-col md:flex-row md:justify-between md:items-start mb-[30px]"
+      >
         {/* Left Corner */}
-        <div style={{ 
-          maxWidth: '60%',
-          textAlign: 'left'
-        }}>
-          <h1 style={{ 
-            fontSize: '2em', 
-            fontWeight: 'normal', 
-            color: '#1a1a1a',
-            lineHeight: '1.2',
-            marginBottom: '10px'
-          }}>
+        <div
+          className="w-full md:w-auto text-center md:text-left"
+          style={{ maxWidth: '60%' }}
+        >
+          <h1
+            className="font-bold text-gray-900 text-xl xs:text-2xl sm:text-3xl md:text-5xl"
+            style={{
+              fontFamily: 'Inter',
+              fontWeight: 500,
+              fontStyle: 'medium',
+              fontSize: window.innerWidth >= 768 ? '50px' : '1.3rem',
+              lineHeight: window.innerWidth >= 768 ? '67px' : '2rem',
+              letterSpacing: window.innerWidth >= 768 ? '-3px' : '-1px',
+            }}
+          >
             Why choose <span style={{ color: '#007bff', fontWeight: 'bold' }}>Fokoremovals</span>
           </h1>
-          <p style={{ 
-            fontSize: '1.1em', 
-            color: '#555',
-          }}>
+          <p
+            className="text-sm md:text-base"
+            style={{ fontSize: window.innerWidth >= 768 ? '1.1em' : '0.95em', color: '#555' }}
+          >
             Your trusted partner for stress-free moves across the UK
           </p>
         </div>
-        
-        {/* Right Corner */}
-        <div style={{ 
-          maxWidth: '35%',
-          fontSize: '0.9em', 
-          color: '#666',
-          textAlign: 'right'
-        }}>
+        {/* Right Corner - always at right on desktop, hidden on mobile, 5 lines max */}
+        <div
+          className="hidden md:block text-[#7E8BA5] text-sm xs:text-base sm:text-lg text-right md:max-w-xs md:ml-auto"
+          style={{
+            fontFamily: 'Arial',
+            fontWeight: 400,
+            fontStyle: 'regular',
+            fontSize: '18px',
+            lineHeight: '28px',
+            letterSpacing: '0px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitLineClamp: 5,
+            WebkitBoxOrient: 'vertical',
+            maxWidth: '320px',
+          }}
+        >
           <p>
-            At Fokoremovalsltd, we combine professionalism, reliability and care to make every move smooth and hassle-free.
+            At Fokoremovalsltd, we combine professionalism, reliability and care to make every move smooth and hassle-free. We go the extra mile for our clients, ensuring satisfaction and peace of mind with every move.
           </p>
         </div>
       </div>
