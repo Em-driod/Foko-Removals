@@ -5,12 +5,13 @@ import NavBar from './component/navBar';
 import Footer from './component/Footer';
 import Home from './pages/Home';
 import Contact from './pages/contact';
+import Service from './pages/service';
 import AnimatedBackground from './component/AnimatedBackground';
 
 const backgroundMap: Record<string, string[] | undefined> = {
-  '/': ['/hero back.png', '/contact.png'], // Landing page images
-  '/contact': ['/contact.png'],
-  '/service': ['/service-bg.png'],
+  '/': ['/hero back.png', '/service.png'], // Landing page images
+  '/contact': ['/hero back.png'],
+  '/service': ['/service.png'],
 };
 
 function BackgroundSwitcher() {
@@ -35,6 +36,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path='/service' element={<Service />} />
           {/* Add your service page route here if needed */}
         </Routes>
         <Footer />
