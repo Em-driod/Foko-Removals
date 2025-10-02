@@ -13,13 +13,13 @@ const Hero = () => {
         </p>
         
         {/* Adjusted text size for better responsiveness */}
-<h1
-  className="font-bold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
-  style={{
-    fontWeight: 600,
-    fontSize: '2.1rem', // ~33px on mobile
-    lineHeight: '2.5rem', // ~40px on mobile
-    letterSpacing: '-2px',
+   <h1
+       className="font-bold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+     style={{
+      fontWeight: 600,
+       fontSize: '2.1rem', // ~33px on mobile
+       lineHeight: '2.5rem', // ~40px on mobile
+       letterSpacing: '-2px',
     // Restore large size for large screens
     ...(window.innerWidth >= 1024 ? {
       fontSize: '50px',
