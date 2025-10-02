@@ -106,10 +106,11 @@ const Offering = () => {
           {/* Content Wrapper: h-[30%] for 30% height */}
           <div className="p-6 space-y-2 flex flex-col flex-grow justify-start h-[30%] text-center md:text-left">
             <h3 className="text-lg font-semibold text-gray-900">
-              Professional Packing
+              Furniture and Delivery
             </h3>
             <p className="text-gray-600 text-sm">
-              Our experts handle all your items with care, using high-quality materials.
+              Reliable pick-up and drop-off of furniture, <br />
+handled with care and efficiency.
             </p>
           </div>
         </div>
@@ -125,10 +126,11 @@ const Offering = () => {
           {/* Content Wrapper: h-[30%] for 30% height */}
           <div className="p-6 space-y-2 flex flex-col flex-grow justify-start h-[30%] text-center md:text-left">
             <h3 className="text-lg font-semibold text-gray-900">
-              Short/Long-Term Storage
+              Same day Or Booked
             </h3>
             <p className="text-gray-600 text-sm">
-              Secure and flexible storage options for when you need extra time or space.
+              Urgent or planned moves delivered on <br />
+time, every time.
             </p>
           </div>
         </div>
@@ -144,10 +146,11 @@ const Offering = () => {
           {/* Content Wrapper: h-[30%] for 30% height */}
           <div className="p-6 space-y-2 flex flex-col flex-grow justify-start h-[30%] text-center md:text-left">
             <h3 className="text-lg font-semibold text-gray-900">
-              International Relocation
+              Local & National
             </h3>
             <p className="text-gray-600 text-sm">
-              We manage all logistics for a stress-free move to any country worldwide.
+             Wherever you’re headed in the UK, we’re  <br />
+ready to get you there.
             </p>
           </div>
         </div>

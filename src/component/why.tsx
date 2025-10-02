@@ -8,18 +8,19 @@ const cardContentStyle: CSSProperties = {
   borderRadius: '12px',
   padding: '20px',
   boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
-  minHeight: '400px',
+  height: '350px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
 };
 
 const featureHeaderStyle: CSSProperties = {
-  fontSize: '1.25em',
-  fontWeight: 'bold',
+  fontFamily: 'inter',
+  fontWeight: 600,
+  fontSize: '17px',
   color: '#1a1a1a',
-  marginTop: '10px',
-  marginBottom: '10px',
+  lineHeight: '32px',
+  letterSpacing: '3%',
 };
 
 const featureDescriptionStyle: CSSProperties = {
@@ -31,10 +32,10 @@ const featureDescriptionStyle: CSSProperties = {
 // Styles for Feature 1's complex image positioning
 const ImageContainerStyle: CSSProperties = {
   position: 'relative',
-  height: '180px',
+  height: '220px', // INCREASED HEIGHT
   background: '#e9ecef',
   borderRadius: '8px',
-  marginBottom: '15px',
+  marginBottom: '8px', // REDUCED MARGIN
   overflow: 'hidden',
 };
 
@@ -103,7 +104,7 @@ const Why = () => {
     <div
       style={{
         position: 'relative',
-        height: '270px', // Slightly increased height to contain floating elements on mobile
+        height: '340px', // Increased height for larger visual area
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -114,14 +115,14 @@ const Why = () => {
       <div
         style={{
           position: 'absolute',
-          top: '0px', // Adjusted starting position up
+          top: '10px', // Adjusted starting position up
           left: '50%',
           transform: 'translateX(-50%)',
           height: '110px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'flex-start',
-          width: '100%',
+          width: '120%',
         }}
       >
         {[0, 1, 2].map((i) => {
@@ -198,7 +199,7 @@ const Why = () => {
         })}
       </div>
 
-      <div style={{ marginTop: '140px' }}> {/* Increased margin for lower stack */}
+      <div style={{ marginTop: '130px' }}> {/* Adjusted margin for lower stack to position text closer to the bottom */}
         <p
           style={{
             textAlign: 'left',
@@ -327,11 +328,11 @@ const Why = () => {
         <div
           style={{
             ...cardContentStyle,
-            textAlign: 'center',
             maxWidth: '350px',
             margin: '0 auto',
           }}
         >
+          {/* Uses ImageContainerStyle which now has height: '220px' and marginBottom: '8px' */}
           <div style={ImageContainerStyle}>
             <img
               src="/road.png"
@@ -347,8 +348,8 @@ const Why = () => {
           <div>
             <h3 style={featureHeaderStyle}>Fully Insured Goods in Transit</h3>
             <p style={featureDescriptionStyle}>
-              Enjoy complete peace of mind knowing your items are protected
-              throughout the move.
+              Enjoy complete peace of mind knowing your 
+              items protected throughout the move.
             </p>
           </div>
         </div>
@@ -357,7 +358,6 @@ const Why = () => {
         <div
           style={{
             ...cardContentStyle,
-            textAlign: 'center',
             maxWidth: '350px',
             margin: '0 auto',
           }}
@@ -365,10 +365,10 @@ const Why = () => {
           <div
             style={{
               position: 'relative',
-              height: '180px',
+              height: '220px', // INCREASED HEIGHT
               background: 'lightgray url(/bgp.png) center/cover no-repeat',
               borderRadius: '8px',
-              marginBottom: '15px',
+              marginBottom: '8px', // REDUCED MARGIN
               overflow: 'visible',
             }}
           >
@@ -380,7 +380,7 @@ const Why = () => {
                 top: '-50px',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                width: '160px',
+                width: '200px',
                 zIndex: '2',
               }}
             />
@@ -390,37 +390,36 @@ const Why = () => {
               Professional, Polite, and Punctual
             </h3>
             <p style={featureDescriptionStyle}>
-              Our experienced team delivers a courteous, timely, and hassle-free
-              service every time.
+              Our experienced team delivers a courteous, 
+              timely, and hassle-free service every time.
             </p>
           </div>
         </div>
 
-        {/* Feature 3: Affordable and Flexible Options (Complex Structure Always Rendered) */}
+        {/* Feature 3: Affordable and Flexible Options */}
         <div
           style={{
             ...cardContentStyle,
-            textAlign: 'center',
             maxWidth: '350px',
             margin: '0 auto',
-            paddingTop: '20px', // Ensure padding is consistent at the top
+            paddingTop: '20px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-end',
           }}
         >
           {featureThreeImageContent}
-          <div style={{ marginTop: '20px' }}>
+          <div style={{ marginTop: '8px' }}> {/* REDUCED MARGIN on text container */}
             <h3 style={featureHeaderStyle}>Affordable and Flexible Options</h3>
             <p style={featureDescriptionStyle}>
-              Choose a plan that fits your schedule and budget without
-              compromising on quality.
+              Choose a plan that fits your schedule and 
+              budget without compromising on quality
             </p>
           </div>
         </div>
       </div>
 
-      {/* Second Row - 2 Features (keeping original dimensions) */}
+      {/* Second Row - 2 Features */}
       <div
         className="why-feature-row"
         style={{
@@ -433,10 +432,10 @@ const Why = () => {
         <div style={{ ...cardContentStyle, minHeight: '350px' }}>
           <div
             style={{
-              height: '200px',
+              height: '220px', // INCREASED HEIGHT
               background: 'lightgray',
               borderRadius: '8px',
-              marginBottom: '15px',
+              marginBottom: '8px', // REDUCED MARGIN
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -468,10 +467,10 @@ const Why = () => {
         <div style={{ ...cardContentStyle, minHeight: '350px' }}>
           <div
             style={{
-              height: '200px',
+              height: '220px', // INCREASED HEIGHT
               background: 'lightgray',
               borderRadius: '8px',
-              marginBottom: '15px',
+              marginBottom: '8px', // REDUCED MARGIN
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
