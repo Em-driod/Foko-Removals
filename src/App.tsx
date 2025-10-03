@@ -9,8 +9,8 @@ import Service from './pages/service';
 import AnimatedBackground from './component/AnimatedBackground';
 
 const backgroundMap: Record<string, string[] | undefined> = {
-  '/': ['/hero back.png', '/service.png'], // Landing page images
-  '/contact': ['/hero back.png'],
+  '/': ['/hero.png', '/service.png'], // Landing page images
+  '/contact': ['/hero.png'],
   '/service': ['/service.png'],
 };
 

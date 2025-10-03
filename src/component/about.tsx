@@ -60,9 +60,9 @@ const About = () => {
           </div>
           
           {/* Right-aligned text ("Reliable, Fast & Timely"): Added mt-2 for separation on mobile. */}
-          <p className="mt-2 md:mt-0 text-xs md:text-sm text-white/70">
-            Reliable, Fast & Timely
-          </p>
+          <p className="hidden md:block mt-2 md:mt-0 text-xs md:text-sm text-white/70">
+  Reliable, Fast & Timely
+</p>
         </div>
       </div>
     </div>
