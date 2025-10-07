@@ -37,7 +37,11 @@ const Offering = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12 max-w-7xl mx-auto">
         
         {/* Card 1 */}
-        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]">
+        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]"
+           style={{
+            boxShadow: '0 8px 32px 0 rgba(37, 99, 235, 0.35), 0 1.5px 8px 0 rgba(37, 99, 235, 0.15)',
+            border: '0px #2563eb',
+          }}>
           {/* Image: h-[70%] for 70% height */}
           <img
             src="/adam mover 1.png"
@@ -56,7 +60,11 @@ const Offering = () => {
         </div>
 
         {/* Card 2 */}
-        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]">
+        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]"
+           style={{
+            boxShadow: '0 8px 32px 0 rgba(37, 99, 235, 0.35), 0 1.5px 8px 0 rgba(37, 99, 235, 0.15)',
+            border: '0px #2563eb',
+          }}>
           {/* Image: h-[70%] for 70% height */}
           <img
             src="relocate.png"
@@ -75,7 +83,11 @@ const Offering = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]">
+        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]"
+           style={{
+            boxShadow: '0 8px 32px 0 rgba(37, 99, 235, 0.35), 0 1.5px 8px 0 rgba(37, 99, 235, 0.15)',
+            border: '0px #2563eb',
+          }}>
           {/* Image: h-[70%] for 70% height */}
           <img
             src="move.png"
@@ -96,7 +108,11 @@ const Offering = () => {
         {/* --- SECOND ROW OF CARDS --- */}
         
         {/* Card 4 (New) */}
-        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]">
+        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]
+         "   style={{
+            boxShadow: '0 8px 32px 0 rgba(37, 99, 235, 0.35), 0 1.5px 8px 0 rgba(37, 99, 235, 0.15)',
+            border: '0px #2563eb',
+          }}>
           {/* Image: h-[70%] for 70% height - NOTE: Update 'placeholder-4.png' to your actual image source */}
           <img
             src="furniture.png" 
@@ -116,7 +132,11 @@ handled with care and efficiency.
         </div>
 
         {/* Card 5 (New) */}
-        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]">
+        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]
+          "   style={{
+            boxShadow: '0 8px 32px 0 rgba(37, 99, 235, 0.35), 0 1.5px 8px 0 rgba(37, 99, 235, 0.15)',
+            border: '0px #2563eb',
+          }}>
           {/* Image: h-[70%] for 70% height - NOTE: Update 'placeholder-5.png' to your actual image source */}
           <img
             src="time.png"
@@ -136,7 +156,11 @@ time, every time.
         </div>
 
         {/* Card 6 (New) */}
-        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]">
+        <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition flex flex-col w-full h-[460px]"
+           style={{
+            boxShadow: '0 8px 32px 0 rgba(37, 99, 235, 0.35), 0 1.5px 8px 0 rgba(37, 99, 235, 0.15)',
+            border: '0px #2563eb',
+          }}>
           {/* Image: h-[70%] for 70% height - NOTE: Update 'placeholder-6.png' to your actual image source */}
           <img
             src="world.png"
