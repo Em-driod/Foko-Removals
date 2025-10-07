@@ -54,7 +54,7 @@ const About = () => {
               }}
             >
               At Foko Removals, we're all about making your move smooth and stress-free. 
-              Whether it's a single item, full house, or office relocation — we've got you covered <br className="block md:hidden" />
+              Whether it's a single item, full house, or office relocation — we've got you covered
               with a friendly team, fair prices, and full insurance for peace of mind.
             </p>
           </div>

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Contact from './pages/contact';
 import Service from './pages/service';
 import AnimatedBackground from './component/AnimatedBackground';
+import Ade from './component/ade';
 
 const backgroundMap: Record<string, string[] | undefined> = {
   '/': ['/hero.png', '/service.png'], // Landing page images
@@ -37,6 +38,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path='/service' element={<Service />} />
+          <Route path='/ade' element={<Ade />} />
           {/* Add your service page route here if needed */}
         </Routes>
         <Footer />
