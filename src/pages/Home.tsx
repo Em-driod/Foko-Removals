@@ -5,7 +5,7 @@ import Why from "../component/why";
 
 const Home = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-hidden">
       <Hero />
      <Offer />
      <About />
