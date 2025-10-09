@@ -44,7 +44,7 @@ const Footer = () => {
     // Ensured full mobile width for the blue background container
     <motion.div
       ref={sectionRef}
-      className="w-full bg-[#007BFF] min-h-screen flex flex-col items-center justify-start py-12 px-4"
+      className="w-full bg-[#007BFF] min-h-screen flex flex-col items-center justify-start py-12 px-4 border-white  border-t-4"
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       variants={containerVariants}

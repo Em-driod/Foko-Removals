@@ -219,7 +219,7 @@ const Why = () => {
                 alignItems: 'center',
                 padding: '0 10px',
                 zIndex: 10 - i,
-                opacity: i === 0 ? 1 : 0.85 - i * 0.2,
+                opacity: i === 0 ? 1 : 2 - i * 0.2,
                 filter: 'none',
               }}
             >
@@ -289,21 +289,21 @@ const Why = () => {
               key={i}
               style={{
                 position: 'absolute',
-                top: `${i * 10}px`,
+                top: `${i * 15}px`,
                 left: '50%',
                 transform: 'translateX(-50%)',
-                width: '85%',
-                maxWidth: '240px',
+                width: '95%',
+                maxWidth: '300px',
                 height: '50px',
                 background: '#fff',
                 borderRadius: '12px',
-                boxShadow: '0 6px 18px 0 rgba(100,100,100,0.18)',
+                boxShadow: '0 6px 18px 0 rgba(100,100,100,0.3)',
                 display: 'flex',
                 alignItems: 'center',
                 padding: '0 10px',
-                zIndex: 10 - i,
-                opacity: i === 0 ? 1 : 0.85,
-                filter: i === 0 ? 'none' : 'blur(1px)',
+                zIndex: 5 - i,
+                opacity: 1,
+                filter: 'none',
               }}
             >
               <img

@@ -8,6 +8,8 @@ import Contact from './pages/contact';
 import Service from './pages/service';
 import AnimatedBackground from './component/AnimatedBackground';
 
+import ScrollToTop from './component/ScrollToTop';
+
 import newbackImageUrl from '/newback.png?url';
 import serviceImageUrl from '/service.png?url';
 
@@ -25,6 +27,7 @@ function BackgroundSwitcher() {
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <div className="fixed inset-0 min-h-screen w-full bg-cover bg-center z-0">
         <BackgroundSwitcher />
       </div>

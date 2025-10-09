@@ -97,14 +97,14 @@ const About = () => {
               className="text-xs md:text-lg text-white/90 text-center md:text-left"
               style={{
                 fontFamily: "Arial",
-                fontWeight: 400,
+                fontWeight: 200,
                 fontStyle: "Regular",
-                fontSize: "13px", // smaller on mobile
+                fontSize: "10px", // smaller on mobile
                 lineHeight: "22px",
                 letterSpacing: "0px",
                 ...(window.innerWidth >= 768
                   ? {
-                      fontSize: "18px",
+                      fontSize: "14px",
                       lineHeight: "32px",
                     }
                   : {}),
