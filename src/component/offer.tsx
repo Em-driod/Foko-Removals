@@ -9,8 +9,9 @@ const headerVariants: Variants = { // Explicitly type as Variants for consistenc
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1], // Valid cubic-bezier array
+      type: "spring",
+      damping: 15,
+      stiffness: 100,
     },
   },
 };
@@ -21,26 +22,23 @@ const cardContainerVariants: Variants = { // Explicitly type as Variants
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15, // Delay between each card animation
-      delayChildren: 0.2,    // Initial delay for the first card
+      staggerChildren: 0.2,
+      delayChildren: 0.2,
     },
   },
 };
 
 // Animation Variants for the Individual Cards
-// Use a type structure that aligns with the object for safety, 
-// or simply let TypeScript infer the type (as shown here for simplicity)
-const cardItemVariants = { 
-  hidden: { opacity: 0, y: 50 },
+const cardItemVariants: Variants = {
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      // The 'spring' type is a string literal, 'as const' makes it strict.
-      // Keeping 'as const' is valid if you prefer a strict string type here.
-      type: "spring" as const, 
-      stiffness: 80,
+      type: "spring",
       damping: 15,
+      stiffness: 80,
     },
   },
 };

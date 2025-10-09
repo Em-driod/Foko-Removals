@@ -18,30 +18,33 @@ const containerVariants: Variants = {
 
 // Helper for the individual item animation on the left side
 const itemVariants: Variants = {
-  hidden: { opacity: 0, x: -50 },
+  hidden: { opacity: 0, x: -40, rotate: -3 },
   visible: {
     opacity: 1,
     x: 0,
+    rotate: 0,
     transition: {
-      type: "spring" as const,
-      stiffness: 100,
-      damping: 10,
+      type: "spring",
+      stiffness: 120,
+      damping: 15,
+      mass: 0.8,
     },
   },
 };
 
 // Helper for the single animation on the right side (contact form)
 const formVariants: Variants = {
-  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  hidden: { opacity: 0, y: 40, scale: 0.9, rotate: 2 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
+    rotate: 0,
     transition: {
-      type: "spring" as const,
-      stiffness: 70,
+      type: "spring",
+      stiffness: 80,
       damping: 15,
-      delay: 0.5, // Start a bit later than the left side
+      delay: 0.4,
     },
   },
 };

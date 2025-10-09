@@ -4,13 +4,16 @@ import { useRef } from "react";
 
 // Animation for the image container
 const imageVariants: Variants = {
-  hidden: { opacity: 0, scale: 1.05 },
+  hidden: { opacity: 0, scale: 1.05, rotate: 1 },
   visible: {
     opacity: 1,
     scale: 1,
+    rotate: 0,
     transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 80,
       duration: 0.8,
-      ease: "easeInOut",
     },
   },
 };
@@ -29,13 +32,14 @@ const textContainerVariants: Variants = {
 
 // Animation for individual text elements
 const textItemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: "easeOut",
+      type: "spring",
+      damping: 15,
+      stiffness: 100,
     },
   },
 };
