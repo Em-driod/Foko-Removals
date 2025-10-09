@@ -1,26 +1,22 @@
 // src/App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './component/navBar';
 import Footer from './component/Footer';
 import Home from './pages/Home';
 import Contact from './pages/contact';
 import Service from './pages/service';
 import AnimatedBackground from './component/AnimatedBackground';
-import Ade from './component/ade';
 
-const backgroundMap: Record<string, string[] | undefined> = {
-  '/': ['/hero.png', '/service.png'], // Landing page images
-  '/contact': ['/hero.png'],
-  '/service': ['/service.png'],
-};
+import newbackImageUrl from '/newback.png?url';
+import serviceImageUrl from '/service.png?url';
+
+const heroImages = [newbackImageUrl, serviceImageUrl];
 
 function BackgroundSwitcher() {
-  const location = useLocation();
-  const bgImages = backgroundMap[location.pathname] || backgroundMap['/'] || [];
   return (
     <>
-      <AnimatedBackground images={bgImages as string[]} />
+      <AnimatedBackground images={heroImages} />
       <div className="absolute inset-0 bg-black/60 z-0"></div>
     </>
   );
@@ -38,7 +34,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path='/service' element={<Service />} />
-          <Route path='/ade' element={<Ade />} />
+          
           {/* Add your service page route here if needed */}
         </Routes>
         <Footer />
@@ -48,3 +44,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+

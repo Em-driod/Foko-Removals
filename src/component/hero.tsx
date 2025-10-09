@@ -114,16 +114,22 @@ const Hero = () => {
           className="space-y-3 pt-4"
           variants={itemVariants} // Apply animation to the whole contact block
         >
-          <p className="flex items-center gap-2 justify-center lg:justify-start">
+          <motion.p
+            className="flex items-center gap-2 justify-center lg:justify-start"
+            whileHover={{ scale: 1.05 }}
+          >
             <p className="bg-white/10 backdrop-blur-md rounded-full p-2 "><FaPhone size={20} /></p>
             <span className="text-lg font-medium ">07920021955</span>
-          </p>
-          <p className="flex items-center gap-2 justify-center lg:justify-start">
+          </motion.p>
+          <motion.p
+            className="flex items-center gap-2 justify-center lg:justify-start"
+            whileHover={{ scale: 1.05 }}
+          >
             <p className="bg-white/10 backdrop-blur-md rounded-full p-2 ">
               <IoIosMailUnread size={20} />
             </p> 
             <span className="text-lg font-medium">info@fokoremovalsltd.co.uk</span>
-          </p>
+          </motion.p>
         </motion.div>
       </motion.div>
 
@@ -179,12 +185,13 @@ const Hero = () => {
             </textarea>
           </div>
           
-          <button 
+          <motion.button 
             type="submit" 
-            className="w-full py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
+            whileHover={{ scale: 1.05, y: -2 }}
           >
             Submit 
-          </button>
+          </motion.button>
         </form>
       </motion.div>
     </div>

@@ -137,6 +137,7 @@ const Offer = () => {
             border: '0px #2563eb',
           }}
           variants={cardItemVariants} // Use item variant for staggered animation
+          whileHover={{ scale: 1.03 }}
         >
           {/* NOTE: Image paths are assumed to be correct in your project */}
           <img
@@ -162,6 +163,7 @@ const Offer = () => {
             border: '0px #2563eb',
           }}
           variants={cardItemVariants}
+          whileHover={{ scale: 1.03 }}
         >
           <img
             src="relocate.png"
@@ -186,6 +188,7 @@ const Offer = () => {
             border: '0px #2563eb',
           }}
           variants={cardItemVariants}
+          whileHover={{ scale: 1.03 }}
         >
           <img
             src="move.png"
@@ -211,6 +214,7 @@ const Offer = () => {
         variants={headerVariants} // Re-use the header animation for the footer link
         initial="hidden"
         animate={isHeaderInView ? "visible" : "hidden"} // Using the same visibility check as the header
+        whileHover={{ x: 5 }}
       >
         <a
           href="#"

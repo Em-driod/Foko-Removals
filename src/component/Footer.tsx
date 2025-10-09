@@ -56,8 +56,8 @@ const Footer = () => {
 
             <div className="flex items-start space-x-3">
               <CiLocationOn
-                className="w-6 h-6 text-blue-500"
-                style={{ marginTop: '2px' }}
+                className="w-7 h-7 text-blue-800  bg-blue-100 rounded-full p-1" size={20}
+                style={{ marginTop: '24px' }}
               />
               <div style={contactInfoStyle}>
                 29 Middle Avenue, <br />
@@ -78,7 +78,7 @@ const Footer = () => {
                   id="name"
                   type="text" 
                   placeholder="Enter your name" 
-                  className="w-full bg-white border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200" 
+                  className="w-full border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200" 
                   required 
                 />
               </div>
@@ -116,7 +116,7 @@ const Footer = () => {
               
               <button 
                 type="submit" 
-                className="w-full py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
+                className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
               >
                 Submit 
               </button>

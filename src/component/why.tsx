@@ -411,6 +411,7 @@ const Why = () => {
             overflow: 'visible',
           }}
           variants={itemVariants} // Apply item variant
+          whileHover={{ scale: 1.02 }}
         >
           <div style={ImageContainerStyle}>
             <div
@@ -451,6 +452,7 @@ const Why = () => {
             margin: '0 auto',
           }}
           variants={itemVariants} // Apply item variant
+          whileHover={{ scale: 1.02 }}
         >
           <div
             style={{
@@ -500,6 +502,7 @@ const Why = () => {
             textAlign: 'initial',
           }}
           variants={itemVariants} // Apply item variant
+          whileHover={{ scale: 1.02 }}
         >
           {featureThreeImageContent}
           <div
@@ -540,6 +543,7 @@ const Why = () => {
         <motion.div 
           style={{ ...cardContentStyle, minHeight: '350px' }}
           variants={itemVariants} // Apply item variant
+          whileHover={{ scale: 1.02 }}
         >
           <div
             style={{
@@ -578,6 +582,7 @@ const Why = () => {
         <motion.div 
           style={{ ...cardContentStyle, minHeight: '350px' }}
           variants={itemVariants} // Apply item variant
+          whileHover={{ scale: 1.02 }}
         >
           <div
             style={{
