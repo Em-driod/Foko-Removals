@@ -28,7 +28,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="fixed inset-0 min-h-screen w-full bg-cover bg-center z-0">
+      <div className="fixed inset-0 min-h-screen w-full bg-cover bg-center z-0 overflow-hidden">
         <BackgroundSwitcher />
       </div>
       <div className="relative z-10 min-h-screen flex flex-col">
