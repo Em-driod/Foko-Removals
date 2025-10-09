@@ -123,7 +123,7 @@ const Why = () => {
     width: '100%',
     height: 'auto',
     top: '-20px',
-    transform: 'rotate(2deg) scale(1.2) translateY(40px)',
+    transform: 'rotate(2deg) scale(1.2) translateY(30px)',
     objectFit: 'cover',
     opacity: 100,
     borderRadius: '8px',
@@ -132,12 +132,12 @@ const Why = () => {
   const TruckImageStyle: CSSProperties = {
     position: 'absolute',
     bottom: '40px',
-    right: '-10%',
-    top: '-50px',
-    width: '230px',
+    right: '-13%',
+    top: '-100px',
+    width: '280px',
     height: 'auto',
     zIndex: '40',
-    transform: 'rotate(2deg)',
+    transform: 'rotate(1deg)',
   };
 
   // --- Global Header/Text Styles (Unchanged) ---
@@ -394,17 +394,19 @@ const Why = () => {
         animate={isFeaturesInView ? 'visible' : 'hidden'} // Trigger stagger animation on scroll
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          // UPDATED: Increased min width for wider cards (320px -> 350px)
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
           gap: isMobile ? '64px' : '20px',
           marginBottom: '30px',
-          marginTop: '20px',
+          marginTop: '80px',
         }}
       >
         {/* Feature 1: Fully Insured */}
         <motion.div
           style={{
             ...cardContentStyle,
-            maxWidth: '350px',
+            // REMOVED/UPDATED: Removing maxWidth to allow card to fill grid space
+            // maxWidth: '400px',
             margin: '0 auto',
             overflow: 'visible',
           }}
@@ -444,7 +446,8 @@ const Why = () => {
         <motion.div
           style={{
             ...cardContentStyle,
-            maxWidth: '350px',
+            // REMOVED/UPDATED: Removing maxWidth to allow card to fill grid space
+            // maxWidth: '400px',
             margin: '0 auto',
           }}
           variants={itemVariants} // Apply item variant
@@ -464,7 +467,7 @@ const Why = () => {
               alt="Mover Character"
               style={{
                 position: 'absolute',
-                top: '-70px',
+                top: '-110px',
                 left: '50%',
                 transform: 'translateX(-50%)',
                 width: '200px',
@@ -487,7 +490,8 @@ const Why = () => {
         <motion.div
           style={{
             ...cardContentStyle,
-            maxWidth: '350px',
+            // REMOVED/UPDATED: Removing maxWidth to allow card to fill grid space
+            // maxWidth: '400px',
             margin: '0 auto',
             paddingTop: '20px',
             display: 'flex',
@@ -527,7 +531,8 @@ const Why = () => {
         animate={isFeaturesInView ? 'visible' : 'hidden'} 
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          // UPDATED: Increased min width for wider cards (320px -> 350px)
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
           gap: isMobile ? '64px' : '20px',
         }}
       >

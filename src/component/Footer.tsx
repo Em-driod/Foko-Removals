@@ -56,7 +56,7 @@ const Footer = () => {
 
             <div className="flex items-start space-x-3">
               <CiLocationOn
-                className="w-6 h-6 text-red-500"
+                className="w-6 h-6 text-blue-500"
                 style={{ marginTop: '2px' }}
               />
               <div style={contactInfoStyle}>
@@ -89,7 +89,7 @@ const Footer = () => {
                   id="email"
                   type="email" 
                   placeholder="Enter your email" 
-                  className="w-full bg-white border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200" 
+                  className="w-full  border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200" 
                   required 
                 />
               </div>
@@ -100,7 +100,7 @@ const Footer = () => {
                   id="subject"
                   type="text" 
                   placeholder="Type the subject" 
-                  className="w-full bg-white border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200" 
+                  className="w-full  border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200" 
                 />
               </div>
               
@@ -109,7 +109,7 @@ const Footer = () => {
                 <textarea 
                   id="message"
                   placeholder="Type your message..." 
-                  className="w-full bg-white border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200 resize-none h-24" 
+                  className="w-full  border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200 resize-none h-24" 
                   rows={4}>
                 </textarea>
               </div>
