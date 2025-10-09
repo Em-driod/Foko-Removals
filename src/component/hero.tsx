@@ -56,7 +56,7 @@ const Hero = () => {
   return (
     // Wrap the main container with motion.div for potential page transitions later
     // or keep it as a standard div if only inner elements need animation
-    <div className="relative min-h-screen flex flex-col lg:flex-row justify-center items-start w-full max-w-7xl mx-auto px-0 lg:px-0 py-16 gap-12 overflow-hidden">
+    <div className="relative min-h-screen flex flex-col lg:flex-row justify-center items-start w-full max-w-7xl mx-auto px-0 lg:px-0 py-16 gap-12 overflow-hidden lg:mt-4">
       
       {/* Left side - Company Info - Staggered Fade-In from Left */}
       <motion.div
@@ -95,7 +95,7 @@ const Hero = () => {
 
         {/* Item 3: Sub-text (P) */}
         <motion.p
-          className="text-gray-200 text-base sm:text-lg md:text-xl"
+          className="text-[#C5CFE3] text-base sm:text-lg md:text-xl"
           style={{
             fontFamily: 'Arial',
             fontWeight: 400,
@@ -111,25 +111,41 @@ const Hero = () => {
 
         {/* Item 4: Contact Info (Container) */}
         <motion.div 
-          className="space-y-3 pt-4"
+          className="space-y-10 pt-4"
           variants={itemVariants} // Apply animation to the whole contact block
         >
-          <motion.p
-            className="flex items-center gap-2 justify-center lg:justify-start"
-            whileHover={{ scale: 1.05 }}
-          >
-            <p className="bg-white/10 backdrop-blur-md rounded-full p-2 "><FaPhone size={20} /></p>
-            <span className="text-lg font-medium ">07920021955</span>
-          </motion.p>
-          <motion.p
-            className="flex items-center gap-2 justify-center lg:justify-start"
-            whileHover={{ scale: 1.05 }}
-          >
-            <p className="bg-white/10 backdrop-blur-md rounded-full p-2 ">
+          <div className="flex items-center gap-2 justify-center lg:justify-start">
+            <motion.div
+              className="bg-white/10 backdrop-blur-md rounded-full p-2"
+              animate={{ rotate: [0, -8, 8, -8, 8, 0] }}
+              transition={{ duration: 0.6, ease: "easeInOut", repeat: Infinity, repeatDelay: 2.5 }}
+            >
+              <FaPhone size={20} />
+            </motion.div>
+            <motion.span
+              className="text-lg font-medium"
+              animate={{ x: [0, -1, 1, -1, 1, 0] }}
+              transition={{ duration: 0.4, ease: "easeInOut", repeat: Infinity, repeatDelay: 2.8 }}
+            >
+              07920021955
+            </motion.span>
+          </div>
+          <div className="flex items-center gap-2 justify-center lg:justify-start">
+            <motion.div
+              className="bg-white/10 backdrop-blur-md rounded-full p-2"
+              animate={{ rotate: [0, -8, 8, -8, 8, 0] }}
+              transition={{ duration: 0.6, ease: "easeInOut", repeat: Infinity, repeatDelay: 3.5 }}
+            >
               <IoIosMailUnread size={20} />
-            </p> 
-            <span className="text-lg font-medium">info@fokoremovalsltd.co.uk</span>
-          </motion.p>
+            </motion.div>
+            <motion.span
+              className="text-lg font-medium"
+              animate={{ x: [0, -1, 1, -1, 1, 0] }}
+              transition={{ duration: 0.4, ease: "easeInOut", repeat: Infinity, repeatDelay: 3.8 }}
+            >
+              info@fokoremovalsltd.co.uk
+            </motion.span>
+          </div>
         </motion.div>
       </motion.div>
 

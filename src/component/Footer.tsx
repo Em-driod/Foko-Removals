@@ -1,9 +1,31 @@
+import { motion, useInView } from 'framer-motion';
+import type { Variants } from "framer-motion";
+import { useRef } from 'react';
 import type { CSSProperties } from 'react';
 // 1. Import icons from react-icons/md instead of lucide-react
 import { MdCall,} from 'react-icons/md';
 import { IoIosMailUnread } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
+
+// --- Animation Variants ---
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.2 },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
 // --- Styling Constants ---
 
 const contactInfoStyle: CSSProperties = {
@@ -15,34 +37,46 @@ const contactInfoStyle: CSSProperties = {
 // --- Component ---
 
 const Footer = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+
   return (
     // Ensured full mobile width for the blue background container
-    <div className="w-full bg-[#007BFF] min-h-screen flex flex-col items-center justify-start py-12 px-4">
+    <motion.div
+      ref={sectionRef}
+      className="w-full bg-[#007BFF] min-h-screen flex flex-col items-center justify-start py-12 px-4"
+      initial="hidden"
+      animate={isInView ? 'visible' : 'hidden'}
+      variants={containerVariants}
+    >
       
       {/* Header Text */}
-      <div className="text-center mb-8">
+      <motion.div className="text-center mb-8" variants={itemVariants}>
         <h2 className="text-white text-3xl md:text-4xl font-bold mb-1">
           Get a Free Quote Today
         </h2>
         <p className="text-white/80 text-sm">Ready to move?</p>
-      </div>
+      </motion.div>
 
       {/* Main Container (White Card) */}
-      <div className="bg-white rounded-xl shadow-2xl p-6 md:p-12 max-w-5xl w-full">
+      <motion.div
+        className="bg-white rounded-xl shadow-2xl p-6 md:p-12 max-w-5xl w-full"
+        variants={containerVariants}
+      >
         {/* FIX: Changed md:items-start to md:items-center to vertically center content on large screens */}
         <div className="flex flex-col md:flex-row justify-between gap-10 md:items-center"> 
           
           {/* Left Side: Contact Info - This is now vertically centered */}
-          <div className="w-full md:w-5/12 space-y-6 pt-4">
-            <div className="flex items-center space-x-3 ">
+          <motion.div className="w-full md:w-5/12 space-y-6 pt-4" variants={containerVariants}>
+            <motion.div className="flex items-center space-x-3 " variants={itemVariants}>
               <MdCall
                 className="w-7 h-7 text-blue-500   bg-blue-100 rounded-full p-1"
               /> <FaWhatsapp color='green'  size={20} />
               <span style={contactInfoStyle}>07920021955</span>
-            </div> 
+            </motion.div> 
 
-            <div className="flex items-center space-x-3">
-              <p className="bg-blue-100 rounded-full p-2 " >
+            <motion.div className="flex items-center space-x-3" variants={itemVariants}>
+              <p className="bg-blue-100 rounded-full  " >
                            <IoIosMailUnread size={20}  color='blue'  className="w-7 h-7 text-blue-500 rounded-full p-1"/>
                          </p> 
               <a
@@ -52,9 +86,9 @@ const Footer = () => {
               >
                 Info@fokoremovals.co.uk
               </a>
-            </div>
+            </motion.div>
 
-            <div className="flex items-start space-x-3">
+            <motion.div className="flex items-start space-x-3" variants={itemVariants}>
               <CiLocationOn
                 className="w-7 h-7 text-blue-800  bg-blue-100 rounded-full p-1" size={20}
                 style={{ marginTop: '24px' }}
@@ -64,11 +98,14 @@ const Footer = () => {
                 Loughborough <br />
                 LE11 5HZ
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Side: Client Contact Form - MOBILE OPTIMIZED */}
-          <div className="bg-[#F3F8FE] backdrop-blur-md rounded-xl p-6 w-full max-w-lg lg:w-7/12 shadow-2xl border border-white/20 mx-auto">
+          <motion.div
+            className="bg-[#F3F8FE] backdrop-blur-md rounded-xl p-6 w-full max-w-lg lg:w-7/12 shadow-2xl border border-white/20 mx-auto"
+            variants={itemVariants}
+          >
             <h2 className="text-black text-2xl font-semibold mb-6 text-center">Client Contact Form</h2>
             <form>
               
@@ -114,24 +151,25 @@ const Footer = () => {
                 </textarea>
               </div>
               
-              <button 
+              <motion.button 
                 type="submit" 
                 className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
+                whileHover={{ scale: 1.05 }}
               >
                 Submit 
-              </button>
+              </motion.button >
             </form>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Footer Copyright */}
-      <div className="mt-12 text-center">
+      <motion.div className="mt-12 text-center" variants={itemVariants}>
         <p className="text-white/60 text-xs">
           © 2025 FOKOREMOLDS Technology. All rights reserved.
         </p>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

@@ -12,7 +12,7 @@ const NavBar = () => {
         {/* Logo + Company Name */}
         <div className="flex items-center gap-2">
           <img
-            src="/folalogo.png"
+            src="/newlogo.png"
             alt="Company Logo"
             className="w-8 h-8 object-contain"
           />
@@ -28,7 +28,7 @@ const NavBar = () => {
               textAlign: "center",
             }}
           >
-            FOKOREMOVALSLTD
+            FOKOREMOVALS
           </span>
         </div>
 
