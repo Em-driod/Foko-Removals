@@ -1,38 +1,28 @@
 import { FaPhone } from "react-icons/fa6";
 import { IoIosMailUnread } from "react-icons/io";
-// 1. Import motion and necessary hooks from framer-motion
+import { useForm, ValidationError } from "@formspree/react";
 import { motion } from "framer-motion";
-
 import type { Variants } from "framer-motion";
 
-// Helper for the staggered animation on the left side
+// Animation Variants
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.15, // Delay between each child animation
-    },
+    transition: { staggerChildren: 0.15 },
   },
 };
 
-// Helper for the individual item animation on the left side
 const itemVariants: Variants = {
   hidden: { opacity: 0, x: -40, rotate: -3 },
   visible: {
     opacity: 1,
     x: 0,
     rotate: 0,
-    transition: {
-      type: "spring",
-      stiffness: 120,
-      damping: 15,
-      mass: 0.8,
-    },
+    transition: { type: "spring", stiffness: 120, damping: 15, mass: 0.8 },
   },
 };
 
-// Helper for the single animation on the right side (contact form)
 const formVariants: Variants = {
   hidden: { opacity: 0, y: 40, scale: 0.9, rotate: 2 },
   visible: {
@@ -40,63 +30,47 @@ const formVariants: Variants = {
     y: 0,
     scale: 1,
     rotate: 0,
-    transition: {
-      type: "spring",
-      stiffness: 80,
-      damping: 15,
-      delay: 0.4,
-    },
+    transition: { type: "spring", stiffness: 80, damping: 15, delay: 0.4 },
   },
 };
 
-// **NOTE:** The inline JavaScript logic using `window.innerWidth` for responsiveness
-// is generally discouraged in React, as it can cause hydration issues and is
-// better handled using CSS/Tailwind classes or a `useLayoutEffect`/`useState` hook.
-// I've kept the original logic structure but strongly recommend refactoring
-// to a custom hook for production code.
-
 const Hero = () => {
+  // ✅ Corrected environment variable
+  const formId = import.meta.env.VITE_FORMSPREE_ID || "xpwanamm"; // fallback if .env missing
+
+  const [state, handleSubmit] = useForm(formId);
+
+
   return (
-    // Wrap the main container with motion.div for potential page transitions later
-    // or keep it as a standard div if only inner elements need animation
-    <div className="relative min-h-screen flex flex-col lg:flex-row justify-center items-start w-full max-w-7xl mx-auto px-0 lg:px-0 py-16 gap-12 overflow-hidden lg:mt-4">
-      
-      {/* Left side - Company Info - Staggered Fade-In from Left */}
+    <div className="relative min-h-screen flex flex-col lg:flex-row justify-center items-start w-full max-w-7xl mx-auto px-0 py-16 gap-12 overflow-hidden lg:mt-4">
+
+      {/* Left side */}
       <motion.div
         className="text-white space-y-6 w-full lg:w-1/2 text-center lg:text-left"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Item 1: Trusted By */}
-        <motion.p 
-          className="text-sm flex items-center justify-center lg:justify-start gap-2"
-          variants={itemVariants}
-        >
-          Trusted By 100+ <span className="text-yellow-400"> <img src="Group 3.png" alt="" /></span>
+        <motion.p className="text-sm flex items-center justify-center lg:justify-start gap-2" variants={itemVariants}>
+          Trusted By 100+ <span className="text-yellow-400"><img src="Group 3.png" alt="" /></span>
         </motion.p>
-        
-        {/* Item 2: Main Title (H1) */}
+
         <motion.h1
           className="font-bold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
           style={{
             fontWeight: 600,
-            fontSize: '2.1rem', // ~33px on mobile
-            lineHeight: '2.5rem', // ~40px on mobile
+            fontSize: '2.1rem',
+            lineHeight: '2.5rem',
             letterSpacing: '-2px',
-            // The original logic is kept, but again, refactoring is recommended
-            ...(window.innerWidth >= 1024 ? {
-              fontSize: '50px',
-              lineHeight: '62px',
-              letterSpacing: '-3px'
-            } : {})
+            ...(window.innerWidth >= 1024
+              ? { fontSize: '50px', lineHeight: '62px', letterSpacing: '-3px' }
+              : {}),
           }}
           variants={itemVariants}
         >
           <span className="text-blue-500">Foko Removals</span> – Your <br /> Move, Our Mission
         </motion.h1>
 
-        {/* Item 3: Sub-text (P) */}
         <motion.p
           className="text-[#C5CFE3] text-base sm:text-lg md:text-xl"
           style={{
@@ -105,18 +79,13 @@ const Hero = () => {
             fontStyle: 'normal',
             fontSize: window.innerWidth >= 1024 ? '18px' : '1rem',
             lineHeight: window.innerWidth >= 1024 ? '26px' : '1.5rem',
-            letterSpacing: '0px',
           }}
           variants={itemVariants}
         >
           Reliable man & van and removal services, Based in <br className="hidden sm:block" /> Loughborough, serving across the UK.
         </motion.p>
 
-        {/* Item 4: Contact Info (Container) */}
-        <motion.div 
-          className="space-y-10 pt-4"
-          variants={itemVariants} // Apply animation to the whole contact block
-        >
+        <motion.div className="space-y-10 pt-4" variants={itemVariants}>
           <div className="flex items-center gap-2 justify-center lg:justify-start">
             <motion.div
               className="bg-white/10 backdrop-blur-md rounded-full p-2"
@@ -133,6 +102,7 @@ const Hero = () => {
               07920021955
             </motion.span>
           </div>
+
           <div className="flex items-center gap-2 justify-center lg:justify-start">
             <motion.div
               className="bg-white/10 backdrop-blur-md rounded-full p-2"
@@ -152,7 +122,7 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* Right side - Contact Form - Scale-Up and Fade-In from Bottom */}
+      {/* Right side form */}
       <motion.div
         className="bg-white/10 backdrop-blur-md rounded-xl p-6 w-[95vw] max-w-md lg:w-[500px] shadow-2xl border border-white/20 mx-auto lg:mx-0"
         variants={formVariants}
@@ -160,56 +130,62 @@ const Hero = () => {
         animate="visible"
       >
         <h2 className="text-white text-2xl font-semibold mb-6 text-center">Client Contact Form</h2>
-        <form>
-          {/* Form fields remain standard */}
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="name" className="text-white mb-1 block text-lg font-medium">Name</label>
-            <input 
+            <input
               id="name"
-              type="text" 
-              placeholder="Enter your name" 
-              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200" 
-              required 
+              name="name"
+              type="text"
+              placeholder="Enter your name"
+              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+              required
             />
           </div>
-          
+
           <div className="mb-4">
             <label htmlFor="email" className="text-white mb-1 block text-lg font-medium">Email</label>
-            <input 
+            <input
               id="email"
-              type="email" 
-              placeholder="Enter your email" 
-              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200" 
-              required 
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+              required
             />
+            <ValidationError prefix="Email" field="email" errors={state.errors} />
           </div>
-          
+
           <div className="mb-4">
             <label htmlFor="subject" className="text-white mb-1 block text-lg font-medium">Subject</label>
-            <input 
+            <input
               id="subject"
-              type="text" 
-              placeholder="Type the subject" 
-              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200" 
+              name="subject"
+              type="text"
+              placeholder="Type the subject"
+              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
             />
           </div>
-          
+
           <div className="mb-6">
             <label htmlFor="message" className="text-white mb-1 block text-lg font-medium">Message</label>
-            <textarea 
+            <textarea
               id="message"
-              placeholder="Type your message..." 
-              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200 resize-none" 
-              rows={4}>
-            </textarea>
+              name="message"
+              placeholder="Type your message..."
+              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200 resize-none"
+              rows={4}
+            />
+            <ValidationError prefix="Message" field="message" errors={state.errors} />
           </div>
-          
-          <motion.button 
-            type="submit" 
+
+          <motion.button
+            type="submit"
             className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
             whileHover={{ scale: 1.05, y: -2 }}
+            disabled={state.submitting}
           >
-            Submit 
+            {state.submitting ? "Sending..." : "Send Message"}
           </motion.button>
         </form>
       </motion.div>
