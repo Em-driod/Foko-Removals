@@ -16,9 +16,9 @@ const NavBar: React.FC = () => {
     textAlign: "center",
   };
 
-  // Reusable Tailwind link classes
+  // Simplified Tailwind link classes (underline removed)
   const baseLinkClasses =
-    "relative transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-blue-500 after:left-0 after:bottom-[-4px] hover:after:w-full";
+    "relative transition duration-300 hover:text-blue-500";
 
   return (
     <div className="bg-white shadow-md rounded-lg w-fit mx-auto mt-4 px-6 py-3 z-50 sticky top-0">
@@ -54,7 +54,7 @@ const NavBar: React.FC = () => {
             className={({ isActive }) =>
               `${baseLinkClasses} ${
                 isActive
-                  ? "text-blue-500 font-semibold after:w-full"
+                  ? "text-blue-500 font-semibold"
                   : "text-[#007BFF] hover:text-blue-500"
               }`
             }
@@ -68,7 +68,7 @@ const NavBar: React.FC = () => {
             className={({ isActive }) =>
               `${baseLinkClasses} ${
                 isActive
-                  ? "text-blue-500 font-semibold after:w-full"
+                  ? "text-blue-500 font-semibold"
                   : "text-[#007BFF] hover:text-blue-500"
               }`
             }
@@ -82,7 +82,7 @@ const NavBar: React.FC = () => {
             className={({ isActive }) =>
               `${baseLinkClasses} ${
                 isActive
-                  ? "text-blue-500 font-semibold after:w-full"
+                  ? "text-blue-500 font-semibold"
                   : "text-[#007BFF] hover:text-blue-500"
               }`
             }
