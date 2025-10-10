@@ -39,6 +39,9 @@ const contactInfoStyle: CSSProperties = {
   fontSize: '1rem',
   fontWeight: '500',
 };
+ const formId = import.meta.env.VITE_FORMSPREE_ID ; // fallback if .env missing
+
+  const [state, handleSubmit] = useForm(formId);
 
 // --- Component ---
 
@@ -113,57 +116,65 @@ const Footer = () => {
             variants={itemVariants}
           >
             <h2 className="text-black text-2xl font-semibold mb-6 text-center">Client Contact Form</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               
-              <div className="mb-4">
-                <label htmlFor="name" className="text-black mb-1 block text-base font-medium">Name</label>
-                <input 
-                  id="name"
-                  type="text" 
-                  placeholder="Enter your name" 
-                  className="w-full border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200" 
-                  required 
-                />
-              </div>
               
-              <div className="mb-4">
-                <label htmlFor="email" className="text-black mb-1 block text-base font-medium">Email</label>
-                <input 
-                  id="email"
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="w-full  border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200" 
-                  required 
-                />
-              </div>
-              
-              <div className="mb-4">
-                <label htmlFor="subject" className="text-black mb-1 block text-base font-medium">Subject</label>
-                <input 
-                  id="subject"
-                  type="text" 
-                  placeholder="Type the subject" 
-                  className="w-full  border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200" 
-                />
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="message" className="text-black mb-1 block text-base font-medium">Message</label>
-                <textarea 
-                  id="message"
-                  placeholder="Type your message..." 
-                  className="w-full  border-b-2 border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-blue-600 py-2.5 transition duration-200 resize-none h-24" 
-                  rows={4}>
-                </textarea>
-              </div>
-              
-              <motion.button 
-                type="submit" 
-                className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
-                whileHover={{ scale: 1.05 }}
-              >
-                Submit 
-              </motion.button >
+                  <div className="mb-4">
+            <label htmlFor="name" className="text-white mb-1 block text-lg font-medium">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Enter your name"
+              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="email" className="text-white mb-1 block text-lg font-medium">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+              required
+            />
+            <ValidationError prefix="Email" field="email" errors={state.errors} />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="subject" className="text-white mb-1 block text-lg font-medium">Subject</label>
+            <input
+              id="subject"
+              name="subject"
+              type="text"
+              placeholder="Type the subject"
+              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label htmlFor="message" className="text-white mb-1 block text-lg font-medium">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Type your message..."
+              className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200 resize-none"
+              rows={4}
+            />
+            <ValidationError prefix="Message" field="message" errors={state.errors} />
+          </div>
+
+          <motion.button
+            type="submit"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
+            whileHover={{ scale: 1.05, y: -2 }}
+            disabled={state.submitting}
+          >
+            {state.submitting ? "Sending..." : "Send Message"}
+          </motion.button>
             </form>
           </motion.div>
         </div>
