@@ -36,7 +36,7 @@ const formVariants: Variants = {
 
 const Hero = () => {
   // ✅ Corrected environment variable
-  const formId = import.meta.env.VITE_FORMSPREE_ID || "xpwanamm"; // fallback if .env missing
+  const formId = import.meta.env.VITE_FORMSPREE_ID ; // fallback if .env missing
 
   const [state, handleSubmit] = useForm(formId);
 

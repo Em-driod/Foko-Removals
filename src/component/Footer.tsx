@@ -7,6 +7,7 @@ import { MdCall,} from 'react-icons/md';
 import { IoIosMailUnread } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
+import { useForm, ValidationError } from "@formspree/react";
 
 // --- Animation Variants ---
 const containerVariants: Variants = {
