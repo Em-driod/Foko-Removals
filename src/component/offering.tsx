@@ -182,14 +182,7 @@ ready to get you there.
       </div>
 
       {/* Footer Link */}
-      <div className="mt-10 text-center max-w-7xl mx-auto">
-        <a
-          href="#"
-          className="text-blue-600 font-medium hover:underline inline-flex items-center gap-2"
-        >
-          See All What We Offer →
-        </a>
-      </div>
+      
     </div>
   );
 };

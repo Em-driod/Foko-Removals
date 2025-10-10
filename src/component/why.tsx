@@ -136,7 +136,7 @@ const Why = () => {
     bottom: '40px',
     right: '-13%',
     top: '-100px',
-    width: '280px',
+    width: '300px',
     height: 'auto',
     zIndex: '40',
     transform: 'rotate(1deg)',

@@ -1,11 +1,25 @@
-
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { NavLink } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 
+const NavBar: React.FC = () => {
+  const [open, setOpen] = useState<boolean>(false);
 
-const NavBar = () => {
-  const [open, setOpen] = useState(false);
+  // Common inline style for all links
+  const linkStyle: CSSProperties = {
+    fontFamily: "Arial, sans-serif",
+    fontWeight: 400,
+    fontStyle: "normal",
+    fontSize: "24px",
+    lineHeight: "100%",
+    letterSpacing: "-0.06em",
+    textAlign: "center",
+  };
+
+  // Reusable Tailwind link classes
+  const baseLinkClasses =
+    "relative transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-blue-500 after:left-0 after:bottom-[-4px] hover:after:w-full";
+
   return (
     <div className="bg-white shadow-md rounded-lg w-fit mx-auto mt-4 px-6 py-3 z-50 sticky top-0">
       <nav className="flex items-center bg-white gap-10">
@@ -36,57 +50,41 @@ const NavBar = () => {
         <div className="hidden md:flex gap-6">
           <NavLink
             to="/"
-            style={{
-              fontFamily: "Ariel",
-              fontWeight: 400,
-              fontStyle: "regular",
-              fontSize: "24px",
-              lineHeight: "100%",
-              letterSpacing: "-0.06em",
-              textAlign: "center",
-            }}
+            style={linkStyle}
             className={({ isActive }) =>
-              isActive
-                ? "text-blue-400 font-bold"
-                : "text-gray-700 hover:text-blue-400"
+              `${baseLinkClasses} ${
+                isActive
+                  ? "text-blue-500 font-semibold after:w-full"
+                  : "text-[#007BFF] hover:text-blue-500"
+              }`
             }
           >
             Home
           </NavLink>
+
           <NavLink
             to="/contact"
-            style={{
-              fontFamily: "Ariel",
-              fontWeight: 400,
-              fontStyle: "regular",
-              fontSize: "24px",
-              lineHeight: "100%",
-              letterSpacing: "-0.06em",
-              textAlign: "center",
-            }}
+            style={linkStyle}
             className={({ isActive }) =>
-              isActive
-                ? "text-blue-700 font-bold"
-                : "text-gray-700 hover:text-blue-500"
+              `${baseLinkClasses} ${
+                isActive
+                  ? "text-blue-500 font-semibold after:w-full"
+                  : "text-[#007BFF] hover:text-blue-500"
+              }`
             }
           >
             Contact
           </NavLink>
+
           <NavLink
             to="/service"
-            style={{
-              fontFamily: "Ariel",
-              fontWeight: 400,
-              fontStyle: "regular",
-              fontSize: "24px",
-              lineHeight: "100%",
-              letterSpacing: "-0.06em",
-              textAlign: "center",
-            }}
+            style={linkStyle}
             className={({ isActive }) =>
-              isActive
-                ? "text-blue-700 font-bold"
-                : "text-gray-700 hover:text-blue-700"
+              `${baseLinkClasses} ${
+                isActive
+                  ? "text-blue-500 font-semibold after:w-full"
+                  : "text-[#007BFF] hover:text-blue-500"
+              }`
             }
           >
             Service
@@ -95,12 +93,17 @@ const NavBar = () => {
 
         {/* Mobile Menu Icon */}
         <div className="md:hidden ml-4">
-          <button onClick={() => setOpen((v) => !v)} aria-label="Open menu">
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Open menu"
+            className="focus:outline-none"
+          >
             <FiMenu size={32} color="#007BFF" />
           </button>
         </div>
       </nav>
-      {/* Mobile Nav Links Dropdown */}
+
+      {/* Mobile Dropdown Menu */}
       {open && (
         <div className="flex flex-col gap-4 mt-4 md:hidden animate-fade-in bg-white rounded-lg shadow p-4 fixed top-16 right-0 w-48 z-50">
           <NavLink
@@ -108,32 +111,34 @@ const NavBar = () => {
             onClick={() => setOpen(false)}
             className={({ isActive }) =>
               isActive
-                ? "text-blue-700 font-bold"
-                : "text-gray-700 hover:text-blue-500"
+                ? "text-blue-500 font-semibold transition duration-200"
+                : "text-gray-700 hover:text-blue-500 transition duration-200"
             }
             style={{ fontSize: "20px" }}
           >
             Home
           </NavLink>
+
           <NavLink
             to="/contact"
             onClick={() => setOpen(false)}
             className={({ isActive }) =>
               isActive
-                ? "text-blue-700 font-bold"
-                : "text-gray-700 hover:text-blue-500"
+                ? "text-blue-500 font-semibold transition duration-200"
+                : "text-gray-700 hover:text-blue-500 transition duration-200"
             }
             style={{ fontSize: "20px" }}
           >
             Contact
           </NavLink>
+
           <NavLink
             to="/service"
             onClick={() => setOpen(false)}
             className={({ isActive }) =>
               isActive
-                ? "text-blue-700 font-bold"
-                : "text-gray-700 hover:text-blue-500"
+                ? "text-blue-500 font-semibold transition duration-200"
+                : "text-gray-700 hover:text-blue-500 transition duration-200"
             }
             style={{ fontSize: "20px" }}
           >

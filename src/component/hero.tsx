@@ -46,7 +46,7 @@ const Hero = () => {
 
       {/* Left side */}
       <motion.div
-        className="text-white space-y-6 w-full lg:w-1/2 text-center lg:text-left"
+        className="text-white space-y-2 w-full lg:w-1/2 text-center lg:text-left"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -116,7 +116,7 @@ const Hero = () => {
               animate={{ x: [0, -1, 1, -1, 1, 0] }}
               transition={{ duration: 0.4, ease: "easeInOut", repeat: Infinity, repeatDelay: 3.8 }}
             >
-              info@fokoremovalsltd.co.uk
+              info@fokoremovals.co.uk
             </motion.span>
           </div>
         </motion.div>
