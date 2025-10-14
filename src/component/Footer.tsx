@@ -2,9 +2,9 @@ import { motion, useInView } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { useRef, type CSSProperties } from "react";
 import { MdCall } from "react-icons/md";
-import { IoIosMailUnread } from "react-icons/io";
-import { FaWhatsapp } from "react-icons/fa";
-import { CiLocationOn } from "react-icons/ci";
+
+
+
 import { useForm, ValidationError } from "@formspree/react";
 
 // --- Animation Variants ---
@@ -68,28 +68,32 @@ const Footer = () => {
         variants={containerVariants}
       >
         <div className="flex flex-col md:flex-row justify-between gap-10 md:items-center">
-          {/* Contact Info */}
+          {/* Contact Info - centered on mobile, left-aligned on md+ */}
           <motion.div
-            className="w-full md:w-5/12 space-y-6 pt-4"
+            className="w-full md:w-5/12 space-y-6 pt-4 flex flex-col items-center md:items-start text-center md:text-left"
             variants={containerVariants}
           >
             <motion.div
-              className="flex items-center space-x-3"
+              className="flex items-center space-x-3 justify-center md:justify-start"
               variants={itemVariants}
             >
-              <MdCall className="w-7 h-7 text-blue-500 bg-blue-100 rounded-full p-1" />
-              <FaWhatsapp color="green" size={20} />
+              <MdCall className="w-7 h-7 text-blue-500 bg-blue-100 rounded-full " />
+              <img
+                src="/whatsapp.png"
+                className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1"
+                alt="whatsapp"
+              />
               <span style={contactInfoStyle}>07920021955</span>
             </motion.div>
 
             <motion.div
-              className="flex items-center space-x-3"
+              className="flex items-center space-x-3 justify-center md:justify-start"
               variants={itemVariants}
             >
-              <IoIosMailUnread
-                size={20}
-                color="blue"
-                className="w-7 h-7 text-blue-500 bg-blue-100 rounded-full p-1"
+              <img
+                src="/gmail.png"
+                className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1"
+                alt="gmail"
               />
               <a
                 href="mailto:info@fokoremovals.co.uk"
@@ -101,13 +105,13 @@ const Footer = () => {
             </motion.div>
 
             <motion.div
-              className="flex items-start space-x-3"
+              className="flex items-center space-x-3 justify-center md:justify-start"
               variants={itemVariants}
             >
-              <CiLocationOn
-                className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1"
-                size={20}
-                style={{ marginTop: "24px" }}
+              <img
+                src="/location.png"
+                className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1 md:mt-6 mt-0"
+                alt="location"
               />
               <div style={contactInfoStyle}>
                 29 Middle Avenue, <br />

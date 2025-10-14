@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import type { Variants } from "framer-motion";
+import { Link } from "react-router-dom";
 
 // Animation Variants for the Header Text
 const headerVariants: Variants = { // Explicitly type as Variants for consistency
@@ -214,12 +215,12 @@ const Offer = () => {
         animate={isHeaderInView ? "visible" : "hidden"} // Using the same visibility check as the header
         whileHover={{ x: 5 }}
       >
-        <a
-          href="#"
+        <Link to={'/service'}
+         
           className="text-blue-600 font-medium hover:underline inline-flex items-center gap-2"
         >
           See All What We Offer →
-        </a>
+        </Link>
       </motion.div>
     </div>
   );
