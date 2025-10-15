@@ -103,7 +103,7 @@ const About = () => {
                 fontFamily: "Arial",
                 fontWeight: 200,
                 fontStyle: "Regular",
-                fontSize: "12px", // smaller on mobile
+                fontSize: "14px", // smaller on mobile
                 lineHeight: "22px",
                 letterSpacing: "0px",
                 ...(window.innerWidth >= 768

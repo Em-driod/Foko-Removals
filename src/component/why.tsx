@@ -334,7 +334,7 @@ const Why = () => {
                   boxShadow: '0 6px 18px 0 rgba(100,100,100,0.3)',
                   display: 'flex',
                   alignItems: 'center',
-                  padding: '0 0px',
+                  padding: '0 6px',
                   zIndex: i === 0 ? 6 : 4,
                   opacity: 1,
                   filter: 'none',
@@ -518,7 +518,7 @@ const Why = () => {
             style={{
               position: 'relative',
               height: '220px',
-              background: '',
+              background: '#F3F8FE',
               borderRadius: '8px',
               marginBottom: '8px',
               overflow: 'visible',
