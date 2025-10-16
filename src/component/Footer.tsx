@@ -77,7 +77,7 @@ const Footer = () => {
               className="flex items-center space-x-3 justify-center md:justify-start"
               variants={itemVariants}
             >
-              <MdCall className="w-7 h-7 text-blue-500 bg-blue-100 rounded-full " />
+              <MdCall className="w-12 h-12 p-2 text-blue-500 bg-blue-100 rounded-full " />
               <img
                 src="/whatsapp.png"
                 className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1"

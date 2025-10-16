@@ -208,16 +208,16 @@ const Why = () => {
           let rotation = 0;
           let extraTop = 0;
           if (i === 0) {
-            rotation = 9;
-            extraTop = -15;
+            rotation = 0;
+            extraTop = -16;
           }
           if (i === 1) {
-            rotation = 0;
-            extraTop = 0;
+            rotation = -9;
+            extraTop = -1;
           }
           if (i === 2) {
-            rotation = 9;
-            extraTop = 20;
+            rotation = 0;
+            extraTop = 25;
           }
           return (
             <div
