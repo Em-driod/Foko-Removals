@@ -55,7 +55,7 @@ const NavBar: React.FC = () => {
               `${baseLinkClasses} ${
                 isActive
                   ? "text-blue-500 font-semibold"
-                  : "text-[#007BFF] hover:text-blue-500"
+                  : "text-gray-500 hover:text-blue-500"
               }`
             }
           >
@@ -69,7 +69,7 @@ const NavBar: React.FC = () => {
               `${baseLinkClasses} ${
                 isActive
                   ? "text-blue-500 font-semibold"
-                  : "text-[#007BFF] hover:text-blue-500"
+                  : "text-gray-500 hover:text-blue-500"
               }`
             }
           >
@@ -83,7 +83,7 @@ const NavBar: React.FC = () => {
               `${baseLinkClasses} ${
                 isActive
                   ? "text-blue-500 font-semibold"
-                  : "text-[#007BFF] hover:text-blue-500"
+                  : "text-gray-500 hover:text-blue-500"
               }`
             }
           >
@@ -112,7 +112,7 @@ const NavBar: React.FC = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-blue-500 font-semibold transition duration-200"
-                : "text-gray-700 hover:text-blue-500 transition duration-200"
+                : "text-gray-500 hover:text-blue-500 transition duration-200"
             }
             style={{ fontSize: "20px" }}
           >
@@ -125,7 +125,7 @@ const NavBar: React.FC = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-blue-500 font-semibold transition duration-200"
-                : "text-gray-700 hover:text-blue-500 transition duration-200"
+                : "text-gray-500 hover:text-blue-500 transition duration-200"
             }
             style={{ fontSize: "20px" }}
           >
@@ -138,7 +138,7 @@ const NavBar: React.FC = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-blue-500 font-semibold transition duration-200"
-                : "text-gray-700 hover:text-blue-500 transition duration-200"
+                : "text-gray-500 hover:text-blue-500 transition duration-200"
             }
             style={{ fontSize: "20px" }}
           >
