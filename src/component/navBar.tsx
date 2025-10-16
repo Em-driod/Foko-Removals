@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 
 const NavBar: React.FC = () => {
@@ -25,11 +25,13 @@ const NavBar: React.FC = () => {
       <nav className="flex items-center bg-white gap-10">
         {/* Logo + Company Name */}
         <div className="flex items-center gap-2">
+          <Link to={'/'}>
           <img
             src="/newlogo.png"
             alt="Company Logo"
             className="w-8 h-8 object-contain"
-          />
+            />
+            </Link>
           <span
             className="text-xl font-bold text-[#007BFF]"
             style={{
