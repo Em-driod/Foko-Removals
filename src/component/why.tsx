@@ -267,7 +267,7 @@ const Why = () => {
                     ? 'House Removal'
                     : 'Man & Van'}
                 </div>
-                <div style={{ fontSize: '0.65em', color: '#777' }}>
+                <div style={{ fontSize: '0.65em', color: '#777' }} className='flex items-center'> <img src="loc.png" className='w-3 h-3' alt="" />
                   {i === 0 ? 'Hathern' : i === 1 ? 'Loughborough' : 'Quorn'}
                 </div>
               </div>
@@ -363,7 +363,7 @@ const Why = () => {
                   >
                     {i === 0 ? 'Packing' : 'Storage'}
                   </div>
-                  <div style={{ fontSize: '0.65em', color: '#777' }}>
+                  <div style={{ fontSize: '0.65em', color: '#777' }} className='items-center flex'> <img src="loc.png" className='w-3 h-3' alt="" />
                     {i === 0 ? 'Barrow upon Soar' : 'Kegworth'}
                   </div>
                 </div>
