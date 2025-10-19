@@ -1,11 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { useRef, type CSSProperties } from "react";
+import { useRef, type CSSProperties, useState } from "react";
 import { MdCall } from "react-icons/md";
-
-
-
-import { useForm, ValidationError } from "@formspree/react";
 
 // --- Animation Variants ---
 const containerVariants: Variants = {
@@ -41,10 +37,33 @@ const contactInfoStyle: CSSProperties = {
 const Footer = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  
+  // State for successful submission
+  const [submitted, setSubmitted] = useState(false);
 
-  // ✅ Correct placement of the hook
-  const formId = import.meta.env.VITE_FORMSPREE_ID || "";
-  const [state, handleSubmit] = useForm(formId);
+  // Define the submission endpoint
+  const formActionUrl = "https://submit-form.com/Aim9V36wq";
+
+  // Handles form submission asynchronously without redirection
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // CRUCIAL: Stops page redirection
+
+    const formData = new FormData(event.currentTarget);
+
+    // Simplified submission logic
+    const response = await fetch(formActionUrl, {
+      method: "POST", 
+      body: formData,
+      headers: {
+          'Accept': 'application/json',
+      }
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+      event.currentTarget.reset(); // Clear form fields on success
+    }
+  };
 
   return (
     <motion.div
@@ -68,7 +87,7 @@ const Footer = () => {
         variants={containerVariants}
       >
         <div className="flex flex-col md:flex-row justify-between gap-10 md:items-center">
-          {/* Contact Info - centered on mobile, left-aligned on md+ */}
+          {/* Contact Info */}
           <motion.div
             className="w-full md:w-5/12 space-y-6 pt-4 flex flex-col items-center md:items-start text-center md:text-left"
             variants={containerVariants}
@@ -77,7 +96,7 @@ const Footer = () => {
               className="flex items-center space-x-3 justify-center md:justify-start"
               variants={itemVariants}
             >
-              <MdCall className="w-7 h-7  text-blue-500 bg-blue-100 rounded-full p-1" />
+              <MdCall className="w-7 h-7  text-blue-500 bg-blue-100 rounded-full p-1" />
               <img
                 src="/whatsapp.png"
                 className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1"
@@ -105,18 +124,20 @@ const Footer = () => {
             </motion.div>
 
             <motion.div
-              className="flex items-center space-x-3 justify-center md:justify-start"
+              className="flex items-start space-x-3" 
               variants={itemVariants}
             >
-              <img
-                src="/location.png"
-                className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1 md:mt-6 mt-0"
-                alt="location"
-              />
-              <div style={contactInfoStyle}>
-                29 Middle Avenue, <br />
-                Loughborough <br />
-                LE11 5HZ
+              <div className="flex items-start space-x-3 w-fit mx-auto md:mx-0">
+                <img
+                  src="/location.png"
+                  className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1 mt-1 flex-shrink-0"
+                  alt="location"
+                />
+                <div style={contactInfoStyle} className="text-center md:text-left">
+                  29 Middle Avenue, <br />
+                  Loughborough <br />
+                  LE11 5HZ
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -126,96 +147,105 @@ const Footer = () => {
             className="bg-[#F3F8FE] backdrop-blur-md rounded-xl p-6 w-full max-w-lg lg:w-7/12 shadow-2xl border border-white/20 mx-auto"
             variants={itemVariants}
           >
-            <h2 className="text-black text-2xl font-semibold mb-6 text-center">
-              Client Contact Form
-            </h2>
-
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="text-black mb-1 block text-lg font-medium"
+            {/* Conditional rendering for success message (UPDATED TEXT HERE) */}
+            {submitted ? (
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="text-center py-10"
                 >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Enter your name"
-                  className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
-                  required
-                />
-              </div>
+                    <h2 className="text-2xl font-semibold text-blue-700 mb-2">
+                    ✅ Submitted!
+                    </h2>
+                    <p className="text-gray-600">
+                    Thanks for reaching out — we’ll get back to you shortly.
+                    </p>
+                </motion.div>
+            ) : (
+                <>
+                    <h2 className="text-black text-2xl font-semibold mb-6 text-center">
+                    Client Contact Form
+                    </h2>
 
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="text-black mb-1 block text-lg font-medium"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
-                  required
-                />
-                <ValidationError
-                  prefix="Email"
-                  field="email"
-                  errors={state.errors}
-                />
-              </div>
+                    {/* Form attached with the async handleSubmit function */}
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-4">
+                            <label
+                                htmlFor="name"
+                                className="text-black mb-1 block text-lg font-medium"
+                            >
+                                Name
+                            </label>
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                placeholder="Enter your name"
+                                className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+                                required
+                            />
+                        </div>
 
-              <div className="mb-4">
-                <label
-                  htmlFor="subject"
-                  className="text-black mb-1 block text-lg font-medium"
-                >
-                  Subject
-                </label>
-                <input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  placeholder="Type the subject"
-                  className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
-                />
-              </div>
+                        <div className="mb-4">
+                            <label
+                                htmlFor="email"
+                                className="text-black mb-1 block text-lg font-medium"
+                            >
+                                Email
+                            </label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                placeholder="Enter your email"
+                                className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+                                required
+                            />
+                        </div>
 
-              <div className="mb-6">
-                <label
-                  htmlFor="message"
-                  className="text-black mb-1 block text-lg font-medium"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="Type your message..."
-                  className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200 resize-none"
-                  rows={4}
-                />
-                <ValidationError
-                  prefix="Message"
-                  field="message"
-                  errors={state.errors}
-                />
-              </div>
+                        <div className="mb-4">
+                            <label
+                                htmlFor="subject"
+                                className="text-black mb-1 block text-lg font-medium"
+                            >
+                                Subject
+                            </label>
+                            <input
+                                id="subject"
+                                name="subject"
+                                type="text"
+                                placeholder="Type the subject"
+                                className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+                            />
+                        </div>
 
-              <motion.button
-                type="submit"
-                className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
-                whileHover={{ scale: 1.05, y: -2 }}
-                disabled={state.submitting}
-              >
-                {state.submitting ? "Sending..." : "Send Message"}
-              </motion.button>
-            </form>
+                        <div className="mb-6">
+                            <label
+                                htmlFor="message"
+                                className="text-black mb-1 block text-lg font-medium"
+                            >
+                                Message
+                            </label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                placeholder="Type your message..."
+                                className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200 resize-none"
+                                rows={4}
+                            />
+                        </div>
+
+                        <motion.button
+                            type="submit"
+                            className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
+                            whileHover={{ scale: 1.05, y: -2 }}
+                        >
+                            Submit
+                        </motion.button>
+                    </form>
+                </>
+            )}
           </motion.div>
         </div>
       </motion.div>

@@ -1,10 +1,10 @@
 import { FaPhone } from "react-icons/fa6";
 import { IoIosMailUnread } from "react-icons/io";
-import { useForm, ValidationError } from "@formspree/react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { useState } from "react"; 
 
-// Animation Variants
+// Animation Variants (Kept the same)
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -35,12 +35,38 @@ const formVariants: Variants = {
 };
 
 const Hero = () => {
-  const formId = import.meta.env.VITE_FORMSPREE_ID || "";
-  const [state, handleSubmit] = useForm(formId);
+  // 1. Only keep the state for successful submission
+  const [submitted, setSubmitted] = useState(false);
+
+  // 2. Define the submission endpoint
+  const formActionUrl = "https://submit-form.com/Aim9V36wq";
+
+  // 3. Define the simplified handleSubmit function
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Stop the default page redirection
+
+    const formData = new FormData(event.currentTarget);
+    
+    // Simplified submission logic without try...catch, error, or loading states
+    const response = await fetch(formActionUrl, {
+      method: "POST", // The method is required for the fetch request
+      body: formData,
+      headers: {
+          'Accept': 'application/json',
+      }
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+      event.currentTarget.reset(); // Clear form fields
+    }
+    // Note: Since you requested no error handling, failures will not be explicitly shown
+  };
+
 
   return (
     <div className="relative min-h-screen flex flex-col lg:flex-row justify-center items-start w-full max-w-7xl mx-auto px-0 py-16 gap-12 overflow-hidden lg:mt-4">
-      {/* Left side */}
+      {/* Left side (content unchanged) */}
       <motion.div
         className="text-white space-y-2 w-full lg:w-1/2 text-center lg:text-left"
         variants={containerVariants}
@@ -153,7 +179,8 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        {state.succeeded ? (
+        {/* 4. Conditional rendering based on the submitted state */}
+        {submitted ? (
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -172,6 +199,9 @@ const Hero = () => {
             <h2 className="text-white text-2xl font-semibold mb-6 text-center">
               Client Contact Form
             </h2>
+            {/* 5. Attach the new handleSubmit function to the form */}
+            {/* The action attribute is not strictly necessary here since it's handled by fetch, 
+                but it's good practice for non-JS fallbacks, though the onSubmit prevents it */}
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
@@ -205,7 +235,6 @@ const Hero = () => {
                   className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
                   required
                 />
-                <ValidationError prefix="Email" field="email" errors={state.errors} />
               </div>
 
               <div className="mb-4">
@@ -238,20 +267,14 @@ const Hero = () => {
                   className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200 resize-none"
                   rows={4}
                 />
-                <ValidationError
-                  prefix="Message"
-                  field="message"
-                  errors={state.errors}
-                />
               </div>
-
+              
               <motion.button
                 type="submit"
                 className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
                 whileHover={{ scale: 1.05, y: -2 }}
-                disabled={state.submitting}
               >
-                {state.submitting ? "Sending..." : "Send Message"}
+                Send Message
               </motion.button>
             </form>
           </>
