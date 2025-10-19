@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { useRef, type CSSProperties, useState } from "react";
-import { MdCall } from "react-icons/md";
+
 
 // --- Animation Variants ---
 const containerVariants: Variants = {
