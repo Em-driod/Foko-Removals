@@ -175,6 +175,22 @@ const Footer = () => {
                                     required
                                 />
                             </div>
+  <div className="mb-4">
+                <label
+                  htmlFor="email"
+                  className="text-black mb-1 block text-lg font-medium"
+                >
+                  Phone Number
+                </label>
+                <input
+                  id="number"
+                  name="number"
+                  type="number"
+                  placeholder="Enter your email"
+                  className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+                  required
+                />
+              </div>
 
                             <div className="mb-4">
                                 <label
