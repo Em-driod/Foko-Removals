@@ -2,7 +2,7 @@ import { FaPhone } from "react-icons/fa6";
 import { IoIosMailUnread } from "react-icons/io";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { useState } from "react"; 
+
 
 // Animation Variants (Kept the same)
 const containerVariants: Variants = {
@@ -36,33 +36,10 @@ const formVariants: Variants = {
 
 const Hero = () => {
   // 1. Only keep the state for successful submission
-  const [submitted, setSubmitted] = useState(false);
+ // Stop the default page redirection
 
-  // 2. Define the submission endpoint
-  const formActionUrl = "https://submit-form.com/Aim9V36wq";
-
-  // 3. Define the simplified handleSubmit function
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Stop the default page redirection
-
-    const formData = new FormData(event.currentTarget);
-    
-    // Simplified submission logic without try...catch, error, or loading states
-    const response = await fetch(formActionUrl, {
-      method: "POST", // The method is required for the fetch request
-      body: formData,
-      headers: {
-          'Accept': 'application/json',
-      }
-    });
-
-    if (response.ok) {
-      setSubmitted(true);
-      event.currentTarget.reset(); // Clear form fields
-    }
-    // Note: Since you requested no error handling, failures will not be explicitly shown
-  };
-
+   
+   
 
   return (
     <div className="relative min-h-screen flex flex-col lg:flex-row justify-center items-start w-full max-w-7xl mx-auto px-0 py-16 gap-12 overflow-hidden lg:mt-4">
@@ -179,30 +156,14 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        {/* 4. Conditional rendering based on the submitted state */}
-        {submitted ? (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-center py-10"
-          >
-            <h2 className="text-2xl font-semibold text-white mb-2">
-              ✅ Submitted!
-            </h2>
-            <p className="text-gray-200">
-              Thanks for reaching out — we’ll get back to you shortly.
-            </p>
-          </motion.div>
-        ) : (
-          <>
+      
             <h2 className="text-white text-2xl font-semibold mb-6 text-center">
               Client Contact Form
             </h2>
             {/* 5. Attach the new handleSubmit function to the form */}
             {/* The action attribute is not strictly necessary here since it's handled by fetch, 
                 but it's good practice for non-JS fallbacks, though the onSubmit prevents it */}
-            <form onSubmit={handleSubmit}>
+            <form method="POST"  action="https://submit-form.com/Aim9V36wq" >
               <div className="mb-4">
                 <label
                   htmlFor="name"
@@ -277,8 +238,7 @@ const Hero = () => {
                 Send Message
               </motion.button>
             </form>
-          </>
-        )}
+          
       </motion.div>
     </div>
   );

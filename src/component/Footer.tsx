@@ -1,267 +1,234 @@
 import { motion, useInView } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { useRef, type CSSProperties, useState } from "react";
+import { useRef, type CSSProperties } from "react";
+import { FaPhone } from "react-icons/fa6";
 
 
 // --- Animation Variants ---
 const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.25, delayChildren: 0.2 },
-  },
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.25, delayChildren: 0.2 },
+  },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring",
-      damping: 15,
-      stiffness: 100,
-    },
-  },
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      damping: 15,
+      stiffness: 100,
+    },
+  },
 };
 
 // --- Styling ---
 const contactInfoStyle: CSSProperties = {
-  color: "#343a40",
-  fontSize: "1rem",
-  fontWeight: "500",
+  color: "#343a40",
+  fontSize: "1rem",
+  fontWeight: "500",
 };
 
 // --- Component ---
 const Footer = () => {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
-  
-  // State for successful submission
-  const [submitted, setSubmitted] = useState(false);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  
+  // Define the submission endpoint
+  
+                                                                             
 
-  // Define the submission endpoint
-  const formActionUrl = "https://submit-form.com/Aim9V36wq";
+  return (
+    <motion.div
+      ref={sectionRef}
+      className="w-full bg-[#007BFF] min-h-screen flex flex-col items-center justify-start py-12 px-4 border-white border-t-4"
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
+      {/* Header */}
+      <motion.div className="text-center mb-8" variants={itemVariants}>
+        <h2 className="text-white text-3xl md:text-4xl font-bold mb-1">
+          Get a Free Quote Today
+        </h2>
+        <p className="text-white/80 text-sm">Ready to move?</p>
+      </motion.div>
 
-  // Handles form submission asynchronously without redirection
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // CRUCIAL: Stops page redirection
+      {/* Card Container */}
+      <motion.div
+        className="bg-white rounded-xl shadow-2xl p-6 md:p-12 max-w-5xl w-full"
+        variants={containerVariants}
+      >
+        <div className="flex flex-col md:flex-row justify-between gap-10 md:items-center">
+          {/* Contact Info (Unchanged UI) */}
+          <motion.div
+            className="w-full md:w-5/12 space-y-6 pt-4 flex flex-col items-center md:items-start text-center md:text-left -ml-4 md:ml-0" 
+            variants={containerVariants}
+          >
+            <motion.div
+              className="flex items-center space-x-3 justify-center md:justify-start"
+              variants={itemVariants}
+            >
+             <motion.div
+                          className="bg-[#dbebff] backdrop-blur-md rounded-full p-2"
+                          animate={{ rotate: [0, -8, 8, -8, 8, 0] }}
+                          transition={{
+                            duration: 0.6,
+                            ease: "easeInOut",
+                            repeat: Infinity,
+                            repeatDelay: 2.5,
+                          }}
+                        >
+                          <FaPhone size={20} color="#067eff" />
+                        </motion.div>
+              <img
+                src="/whatsapp.png"
+                className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1"
+                alt="whatsapp"
+              />
+              <span style={contactInfoStyle}>07920021955</span>
+            </motion.div>
 
-    const formData = new FormData(event.currentTarget);
+            <motion.div
+              className="flex items-center space-x-3 justify-center md:justify-start"
+              variants={itemVariants}
+            >
+              <img
+                src="/gmail.png"
+                className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1"
+                alt="gmail"
+              />
+              <a
+                href="mailto:info@fokoremovals.co.uk"
+                style={contactInfoStyle}
+                className="hover:text-blue-600 transition"
+              >
+                Info@fokoremovals.co.uk
+              </a>
+            </motion.div>
 
-    // Simplified submission logic
-    const response = await fetch(formActionUrl, {
-      method: "POST", 
-      body: formData,
-      headers: {
-          'Accept': 'application/json',
-      }
-    });
+            <motion.div
+              className="flex items-start space-x-3 justify-center md:justify-start" 
+              variants={itemVariants}
+            >
+              <div className="flex items-start space-x-3 w-fit mx-auto md:mx-0">
+                <img
+                  src="/location.png"
+                  className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1 mt-1 flex-shrink-0"
+                  alt="location"
+                />
+                <div style={contactInfoStyle} className="text-center md:text-left">
+                  29 Middle Avenue, <br />
+                  Loughborough <br />
+                  LE11 5HZ
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
 
-    if (response.ok) {
-      setSubmitted(true);
-      event.currentTarget.reset(); // Clear form fields on success
-    }
-  };
+          {/* Contact Form */}
+          <motion.div
+            className="bg-[#F3F8FE] backdrop-blur-md rounded-xl p-6 w-full max-w-lg lg:w-7/12 shadow-2xl border border-white/20 mx-auto"
+            variants={itemVariants}
+          >
+                        <h2 className="text-black text-2xl font-semibold mb-6 text-center">
+                        Client Contact Form
+                        </h2>
 
-  return (
-    <motion.div
-      ref={sectionRef}
-      className="w-full bg-[#007BFF] min-h-screen flex flex-col items-center justify-start py-12 px-4 border-white border-t-4"
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={containerVariants}
-    >
-      {/* Header */}
-      <motion.div className="text-center mb-8" variants={itemVariants}>
-        <h2 className="text-white text-3xl md:text-4xl font-bold mb-1">
-          Get a Free Quote Today
-        </h2>
-        <p className="text-white/80 text-sm">Ready to move?</p>
-      </motion.div>
+                        {/* FORM ACTION URL IS THE ONLY LOGIC ON THE FORM TAG */}
+                        <form method="POST"  action="https://submit-form.com/Aim9V36wq" >
+                            <div className="mb-4">
+                                <label
+                                    htmlFor="name"
+                                    className="text-black mb-1 block text-lg font-medium"
+                                >
+                                    Name
+                                </label>
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    placeholder="Enter your name"
+                                    className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+                                    required
+                                />
+                            </div>
 
-      {/* Card Container */}
-      <motion.div
-        className="bg-white rounded-xl shadow-2xl p-6 md:p-12 max-w-5xl w-full"
-        variants={containerVariants}
-      >
-        <div className="flex flex-col md:flex-row justify-between gap-10 md:items-center">
-          {/* Contact Info */}
-          <motion.div
-            className="w-full md:w-5/12 space-y-6 pt-4 flex flex-col items-center md:items-start text-center md:text-left"
-            variants={containerVariants}
-          >
-            <motion.div
-              className="flex items-center space-x-3 justify-center md:justify-start"
-              variants={itemVariants}
-            >
-              <img
-                src="/call.png"
-                className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1"
-                alt="whatsapp"
-              />
-              <img
-                src="/whatsapp.png"
-                className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1"
-                alt="whatsapp"
-              />
-              <span style={contactInfoStyle}>07920021955</span>
-            </motion.div>
+                            <div className="mb-4">
+                                <label
+                                    htmlFor="email"
+                                    className="text-black mb-1 block text-lg font-medium"
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    placeholder="Enter your email"
+                                    className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+                                    required
+                                />
+                            </div>
 
-            <motion.div
-              className="flex items-center space-x-3 justify-center md:justify-start"
-              variants={itemVariants}
-            >
-              <img
-                src="/gmail.png"
-                className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1"
-                alt="gmail"
-              />
-              <a
-                href="mailto:info@fokoremovals.co.uk"
-                style={contactInfoStyle}
-                className="hover:text-blue-600 transition"
-              >
-                Info@fokoremovals.co.uk
-              </a>
-            </motion.div>
+                            <div className="mb-4">
+                                <label
+                                    htmlFor="subject"
+                                    className="text-black mb-1 block text-lg font-medium"
+                                >
+                                    Subject
+                                </label>
+                                <input
+                                    id="subject"
+                                    name="subject"
+                                    type="text"
+                                    placeholder="Type the subject"
+                                    className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
+                                />
+                            </div>
 
-            <motion.div
-              className="flex items-start space-x-3" 
-              variants={itemVariants}
-            >
-              <div className="flex items-start space-x-3 w-fit mx-auto md:mx-0">
-                <img
-                  src="/location.png"
-                  className="w-7 h-7 text-blue-800 bg-blue-100 rounded-full p-1 mt-1 flex-shrink-0"
-                  alt="location"
-                />
-                <div style={contactInfoStyle} className="text-center md:text-left">
-                  29 Middle Avenue, <br />
-                  Loughborough <br />
-                  LE11 5HZ
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+                            <div className="mb-6">
+                                <label
+                                    htmlFor="message"
+                                    className="text-black mb-1 block text-lg font-medium"
+                                >
+                                    Message
+                                </label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    placeholder="Type your message..."
+                                    className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200 resize-none"
+                                    rows={4}
+                                    required 
+                                />
+                            </div>
 
-          {/* Contact Form */}
-          <motion.div
-            className="bg-[#F3F8FE] backdrop-blur-md rounded-xl p-6 w-full max-w-lg lg:w-7/12 shadow-2xl border border-white/20 mx-auto"
-            variants={itemVariants}
-          >
-            {/* Conditional rendering for success message (UPDATED TEXT HERE) */}
-            {submitted ? (
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="text-center py-10"
-                >
-                    <h2 className="text-2xl font-semibold text-blue-700 mb-2">
-                    ✅ Submitted!
-                    </h2>
-                    <p className="text-gray-600">
-                    Thanks for reaching out — we’ll get back to you shortly.
-                    </p>
-                </motion.div>
-            ) : (
-                <>
-                    <h2 className="text-black text-2xl font-semibold mb-6 text-center">
-                    Client Contact Form
-                    </h2>
+                            <motion.button
+                                type="submit"
+                                className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
+                                whileHover={{ scale: 1.05, y: -2 }}
+                            >
+                                Submit
+                            </motion.button>
+                        </form>
+          </motion.div>
+        </div>
+      </motion.div>
 
-                    {/* Form attached with the async handleSubmit function */}
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-4">
-                            <label
-                                htmlFor="name"
-                                className="text-black mb-1 block text-lg font-medium"
-                            >
-                                Name
-                            </label>
-                            <input
-                                id="name"
-                                name="name"
-                                type="text"
-                                placeholder="Enter your name"
-                                className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
-                                required
-                            />
-                        </div>
-
-                        <div className="mb-4">
-                            <label
-                                htmlFor="email"
-                                className="text-black mb-1 block text-lg font-medium"
-                            >
-                                Email
-                            </label>
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                placeholder="Enter your email"
-                                className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
-                                required
-                            />
-                        </div>
-
-                        <div className="mb-4">
-                            <label
-                                htmlFor="subject"
-                                className="text-black mb-1 block text-lg font-medium"
-                            >
-                                Subject
-                            </label>
-                            <input
-                                id="subject"
-                                name="subject"
-                                type="text"
-                                placeholder="Type the subject"
-                                className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
-                            />
-                        </div>
-
-                        <div className="mb-6">
-                            <label
-                                htmlFor="message"
-                                className="text-black mb-1 block text-lg font-medium"
-                            >
-                                Message
-                            </label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                placeholder="Type your message..."
-                                className="w-full bg-transparent border-b border-gray-400 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 py-2 transition duration-200 resize-none"
-                                rows={4}
-                            />
-                        </div>
-
-                        <motion.button
-                            type="submit"
-                            className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 text-white text-lg font-semibold hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                        >
-                            Submit
-                        </motion.button>
-                    </form>
-                </>
-            )}
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Footer Bottom */}
-      <motion.div className="mt-12 text-center" variants={itemVariants}>
-        <p className="text-white/60 text-xs">
-          © 2025 FOKOREMOLDS Technology. All rights reserved.
-        </p>
-      </motion.div>
-    </motion.div>
-  );
+      {/* Footer Bottom (Unchanged UI) */}
+      <motion.div className="mt-12 text-center" variants={itemVariants}>
+        <p className="text-white/60 text-xs">
+          © 2025 FOKOREMOLDS Technology. All rights reserved.
+        </p>
+      </motion.div>
+    </motion.div>
+  );
 };
 
 export default Footer;
