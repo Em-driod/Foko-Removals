@@ -224,7 +224,7 @@ const Footer = () => {
       {/* Footer Bottom (Unchanged UI) */}
       <motion.div className="mt-12 text-center" variants={itemVariants}>
         <p className="text-white/60 text-xs">
-          © 2025 FOKOREMOLDS Technology. All rights reserved.
+          © 2025 FOKOREMOVALS Technology. All rights reserved.
         </p>
       </motion.div>
     </motion.div>

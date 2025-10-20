@@ -403,7 +403,7 @@ const Why = () => {
             style={textStyles}
           >
             Your trusted partner for stress-free moves <br />
-            across the Uk
+            across the UK
           </motion.p>
         </div>
         <div
@@ -460,7 +460,7 @@ const Why = () => {
               {splitHeader('Fully Insured Goods in Transit', ' Insured ')}
             </h3>
             <p style={featureDescriptionStyle}>
-              Enjoy complete peace of mind knowing your items protected
+              Enjoy complete peace of mind knowing your items are protected
               throughout the move.
             </p>
           </div>
