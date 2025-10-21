@@ -222,13 +222,13 @@ const Hero = () => {
                   htmlFor="subject"
                   className="text-white mb-1 block text-lg font-medium"
                 >
-                  Subject
+                  Address
                 </label>
                 <input
                   id="subject"
                   name="subject"
                   type="text"
-                  placeholder="Type the subject"
+                  placeholder="Enter your address "
                   className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
                 />
               </div>
