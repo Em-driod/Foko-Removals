@@ -104,7 +104,10 @@ const Hero = () => {
                 repeatDelay: 2.5,
               }}
             >
+              <a href="tel:+07920021955">
+                
               <FaPhone size={20} />
+              </a>
             </motion.div>
             <motion.span
               className="text-lg font-medium"
@@ -116,7 +119,10 @@ const Hero = () => {
                 repeatDelay: 2.8,
               }}
             >
+              <a href="tel:+07920021955">
+
               07920021955
+              </a>
             </motion.span>
           </div>
 
@@ -130,8 +136,10 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatDelay: 3.5,
               }}
-            >
+            > <a href="mailto:info@fokoremovals.co.uk">
+
               <IoIosMailUnread size={20} />
+            </a>
             </motion.div>
             <motion.span
               className="text-lg font-medium"
@@ -143,7 +151,10 @@ const Hero = () => {
                 repeatDelay: 3.8,
               }}
             >
+              <a href="mailto:info@fokoremovals.co.uk">
+
               info@fokoremovals.co.uk
+              </a>
             </motion.span>
           </div>
         </motion.div>
