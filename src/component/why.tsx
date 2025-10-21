@@ -585,13 +585,15 @@ const Why = () => {
               }}
             />
           </div>
-          <h3 style={featureHeaderStyle}>
-            {splitHeader('Your Belongings Handled with Care', ' Belongings ')}
-          </h3>
-          <p style={featureDescriptionStyle}>
-            We treat your possessions as if they were our own, ensuring safe
-            transport at every stage.
-          </p>
+          <div style={isMobile ? { display: 'contents' } : {}}>
+            <h3 style={featureHeaderStyle}>
+              {splitHeader('Your Belongings Handled with Care', ' Belongings ')}
+            </h3>
+            <p style={featureDescriptionStyle}>
+              We treat your possessions as if they were our own, ensuring safe
+              transport at every stage.
+            </p>
+          </div>
         </motion.div>
 
         {/* Feature 5 */}
@@ -624,13 +626,15 @@ const Why = () => {
               }}
             />
           </div>
-          <h3 style={featureHeaderStyle}>
-            {splitHeader('Based in Loughborough, Operating UK-Wide', ', ')}
-          </h3>
-          <p  style={featureDescriptionStyle}>
-            Local expertise with national reach wherever you're moving, we've
-            got you covered.
-          </p>
+          <div style={isMobile ? { display: 'contents' } : {}}>
+            <h3 style={featureHeaderStyle}>
+              {splitHeader('Based in Loughborough, Operating UK-Wide', ', ')}
+            </h3>
+            <p  style={featureDescriptionStyle}>
+              Local expertise with national reach wherever you're moving, we've
+              got you covered.
+            </p>
+          </div>
         </motion.div>
       </motion.div>
     </div>
