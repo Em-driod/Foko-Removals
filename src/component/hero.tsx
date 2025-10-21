@@ -222,7 +222,7 @@ const Hero = () => {
                   id="number"
                   name="number"
                   type="number"
-                  placeholder="Enter your email"
+                  placeholder="Enter your phone number"
                   className="w-full bg-transparent border-b border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400 py-2 transition duration-200"
                   required
                 />
