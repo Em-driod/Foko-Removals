@@ -136,6 +136,7 @@ const Why = () => {
   const TopAlignedImageContainerStyle: CSSProperties = {
     position: 'relative',
     height: '220px',
+    // Re-added radius to the container
     borderRadius: '8px',
     marginBottom: '8px',
     width: 'calc(100% + 40px)',
@@ -428,8 +429,8 @@ const Why = () => {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
           gap: isMobile ? '120px' : '20px',
-          marginBottom: '30px',
-          marginTop: '80px',
+          marginBottom: isMobile ? '40px' : '30px', // Reduced margin for mobile
+          marginTop: isMobile ? '40px' : '80px', // Reduced margin for mobile
         }}
       >
         {/* Feature 1 */}
@@ -551,7 +552,8 @@ const Why = () => {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-          gap: isMobile ? '120px' : '20px',
+          // Reduced gap for mobile between Feature 4 and 5
+          gap: isMobile ? '80px' : '20px',
         }}
       >
         {/* Feature 4 */}
@@ -568,7 +570,7 @@ const Why = () => {
               alignItems: 'center',
               justifyContent: 'center',
               color: '#666',
-              borderRadius: '0', // ✅ removed radius
+              // Removed explicit borderRadius: '0'
             }}
           >
             <img
@@ -578,7 +580,8 @@ const Why = () => {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                borderRadius: '0', // ✅ removed radius
+                // Curved the image corners
+                borderRadius: '8px',
               }}
             />
           </div>
@@ -605,7 +608,7 @@ const Why = () => {
               alignItems: 'flex-start',
               justifyContent: 'center',
               color: '#666',
-              borderRadius: '0', // ✅ removed radius
+              // Removed explicit borderRadius: '0'
             }}
           >
             <img
@@ -616,14 +619,15 @@ const Why = () => {
                 height: '100%',
                 objectFit: 'cover',
                 objectPosition: 'top',
-                borderRadius: '0', // ✅ removed radius
+                // Curved the image corners
+                borderRadius: '8px',
               }}
             />
           </div>
           <h3 style={featureHeaderStyle}>
             {splitHeader('Based in Loughborough, Operating UK-Wide', ', ')}
           </h3>
-          <p style={featureDescriptionStyle}>
+          <p  style={featureDescriptionStyle}>
             Local expertise with national reach wherever you're moving, we've
             got you covered.
           </p>

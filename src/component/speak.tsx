@@ -61,7 +61,7 @@ const Speak: FC = () => {
             textAlign: 'center',
           }}
         >
-          Speak with our experience <br /> team at{' '}
+          Speak with our experienced <br /> team at{' '}
           <span className="text-[#1e88e5]">Fokoremovals</span>
         </motion.h2>
 
